@@ -8,7 +8,7 @@
     "net8.0": []
   },
   "packageFolders": {
-    "/tmp/.nuget/packages/": {}
+    "/home/webeditor/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
@@ -16,11 +16,11 @@
       "projectUniqueName": "/var/www/html/hacknasa24/app/Scripts/translator/translator.csproj",
       "projectName": "translator",
       "projectPath": "/var/www/html/hacknasa24/app/Scripts/translator/translator.csproj",
-      "packagesPath": "/tmp/.nuget/packages/",
+      "packagesPath": "/home/webeditor/.nuget/packages/",
       "outputPath": "/var/www/html/hacknasa24/app/Scripts/translator/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/tmp/.nuget/NuGet/NuGet.Config"
+        "/home/webeditor/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"

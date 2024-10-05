@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "app", "app", "{C8B5420B-98B1-4121-8238-2FCB8288D0D6}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{6278A329-884B-4662-BD77-95CD1BBD8A5A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "translator", "app\Scripts\translator\translator.csproj", "{7458FD1D-92E9-4807-B1C0-BD314800431A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7458FD1D-92E9-4807-B1C0-BD314800431A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7458FD1D-92E9-4807-B1C0-BD314800431A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7458FD1D-92E9-4807-B1C0-BD314800431A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7458FD1D-92E9-4807-B1C0-BD314800431A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6278A329-884B-4662-BD77-95CD1BBD8A5A} = {C8B5420B-98B1-4121-8238-2FCB8288D0D6}
+		{7458FD1D-92E9-4807-B1C0-BD314800431A} = {6278A329-884B-4662-BD77-95CD1BBD8A5A}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A020E341-58F3-420F-834A-0333C986DF5A}
+	EndGlobalSection
+EndGlobal
