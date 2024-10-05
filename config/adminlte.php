@@ -256,7 +256,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => '/',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -303,6 +303,20 @@ return [
         'type' => 'fullscreen-widget',
         'topnav_right' => true,
     ],
+    [
+        'text' => 'login',
+        'topnav' => true,
+        'url'=> 'login',
+        'topnav_right' => true,
+        'can'=> 'logged-in',
+    ],
+    [
+        'text' => 'register',
+        'topnav' => true,
+        'url'=> 'register',
+        'topnav_right' => true,
+        'can'=> 'logged-in',
+    ],
 
     // Sidebar items:
     [
@@ -310,19 +324,16 @@ return [
         'text' => 'search',
     ],
     [
-        'text' => 'Home',
-        'url' => '/',
-        'icon' => 'fas fa-fw fa-home',
-    ],
-    [
         'text' => 'Explore the Sky',
         'url' => 'explore',
         'icon' => 'fas fa-fw fa-globe',
-    ],
-    [
-        'text' => 'Create Constellations',
-        'url' => 'create-constellations',
-        'icon' => 'fas fa-fw fa-star',
+        'submenu' => [
+            [
+                'text' => 'Create Constellations',
+                'url' => 'create-constellations',
+                'icon' => 'fas fa-fw fa-star',
+            ],
+        ],
     ],
     [
         'text' => 'Information and Resources',
