@@ -159,7 +159,7 @@
 @section('footer')
     <div class="custom-footer">
         <div class="float-right">
-            Version: {{ config('app.version', '2.0.0') }}
+            Version: {{ config('app.version', '1.0.0') }}
         </div>
         <strong>
             <a href="{{ config('app.company_url', '#') }}">
