@@ -3,7 +3,14 @@
 @section('subtitle', 'Welcome page')
 
 @section('content_body')
-    Olis 2 :3
+    
+ChatGPT para Información sobre Exoplanetas <br>
+
+Pequeño Tutorial sobre el Funcionamiento de la Web <br>
+
+Descargar Datos Generados en Local (CSV o Archivo) <br>
+
+Modo Oscuro y Claro para Cambiar la Visualización
 @stop
 
 @section('footer')

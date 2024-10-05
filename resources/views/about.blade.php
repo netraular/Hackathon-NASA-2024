@@ -3,7 +3,10 @@
 @section('subtitle', 'Welcome page')
 
 @section('content_body')
-    Olis 3 :3
+    
+Información sobre el Proyecto y la Hackathon <br>
+
+Información sobre nosotros y contacto 
 @stop
 
 @section('footer')

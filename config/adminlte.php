@@ -335,6 +335,11 @@ return [
                 'url' => 'exploreV2',
                 'icon' => 'fas fa-fw fa-star',
             ],
+            [
+                'text' => 'V3',
+                'url' => 'exploreV3',
+                'icon' => 'fas fa-fw fa-star',
+            ],
         ],
     ],
     [

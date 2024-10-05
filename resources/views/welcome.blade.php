@@ -3,7 +3,16 @@
 @section('subtitle', 'Welcome page')
 
 @section('content_body')
-    Olis :3
+Explicación Visual y Breve del Proyecto
+<br>
+
+Slideshow de Ejemplos de Cielos Vistos desde Planetas
+<br>
+
+Últimas Constelaciones Creadas
+<br>
+
+Sistema de Votación de Constelaciones
 @stop
 
 @section('footer')
