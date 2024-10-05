@@ -1,8 +1,14 @@
 @extends('adminlte::page')
 
 @section('title', config('app.name', 'Exosky!'))
+@section('head')
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
+    <link rel="apple-touch-icon" sizes="1024x1024" href="{{ asset('favicon.png') }}">
+@stop
+
 
 @section('content_header')
+
     <h1>@yield('content_header_title')</h1>
 @stop
 
@@ -44,3 +50,7 @@
     */
 </style>
 @endpush
+
+@section('adminlte_logo')
+    <img src="{{ asset(config('app.logo_path')) }}" alt="Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+@stop

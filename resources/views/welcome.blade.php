@@ -6,7 +6,7 @@
     <div id="threejs-container">
         <div id="info">
             <div id="text_tutorial">
-                Haz clic en una estrella para ver sus coordenadas. Usa el mouse para rotar y el scroll para hacer zoom.
+            Haz clic en una estrella para ver sus coordenadas. Usa el mouse para rotar y el scroll para hacer zoom.
                 <button class="btn btn-outline-dark btn-sm" style="color:white" onclick="document.getElementById('text_tutorial').style.display = 'none';">X</button>
             </div>
         </div>
@@ -163,7 +163,7 @@
         </div>
         <strong>
             <a href="{{ config('app.company_url', '#') }}">
-                Button :)
+                Button :) Aquí debería haber opciones
             </a>
         </strong>
     </div>
