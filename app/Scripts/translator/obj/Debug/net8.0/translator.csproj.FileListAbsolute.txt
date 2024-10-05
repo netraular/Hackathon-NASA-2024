@@ -1,0 +1,15 @@
+/var/www/html/hacknasa24/app/Scripts/translator/bin/Debug/net8.0/translator
+/var/www/html/hacknasa24/app/Scripts/translator/bin/Debug/net8.0/translator.deps.json
+/var/www/html/hacknasa24/app/Scripts/translator/bin/Debug/net8.0/translator.runtimeconfig.json
+/var/www/html/hacknasa24/app/Scripts/translator/bin/Debug/net8.0/translator.dll
+/var/www/html/hacknasa24/app/Scripts/translator/bin/Debug/net8.0/translator.pdb
+/var/www/html/hacknasa24/app/Scripts/translator/obj/Debug/net8.0/translator.GeneratedMSBuildEditorConfig.editorconfig
+/var/www/html/hacknasa24/app/Scripts/translator/obj/Debug/net8.0/translator.AssemblyInfoInputs.cache
+/var/www/html/hacknasa24/app/Scripts/translator/obj/Debug/net8.0/translator.AssemblyInfo.cs
+/var/www/html/hacknasa24/app/Scripts/translator/obj/Debug/net8.0/translator.csproj.CoreCompileInputs.cache
+/var/www/html/hacknasa24/app/Scripts/translator/obj/Debug/net8.0/translator.sourcelink.json
+/var/www/html/hacknasa24/app/Scripts/translator/obj/Debug/net8.0/translator.dll
+/var/www/html/hacknasa24/app/Scripts/translator/obj/Debug/net8.0/refint/translator.dll
+/var/www/html/hacknasa24/app/Scripts/translator/obj/Debug/net8.0/translator.pdb
+/var/www/html/hacknasa24/app/Scripts/translator/obj/Debug/net8.0/translator.genruntimeconfig.cache
+/var/www/html/hacknasa24/app/Scripts/translator/obj/Debug/net8.0/ref/translator.dll

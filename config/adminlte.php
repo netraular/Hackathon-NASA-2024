@@ -348,6 +348,11 @@ return [
         'icon' => 'fas fa-fw fa-info-circle',
     ],
     [
+        'text' => 'Upload new data',
+        'url' => 'stardata/uploadstars',
+        'icon' => 'fas fa-fw fa-upload',
+    ],
+    [
         'text' => 'About',
         'url' => 'about',
         'icon' => 'fas fa-fw fa-question-circle',

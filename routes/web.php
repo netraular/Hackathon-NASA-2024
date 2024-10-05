@@ -1,6 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\StarDataController;
+
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 Route::get('/', function () {
     return view('welcome');
@@ -22,6 +28,6 @@ Route::get('/about', function () {
     return view('about');
 });
 
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/test-script', [StarDataController::class, 'testScript'])->name('test.script');
+Route::get('/stardata/uploadstars', [StarDataController::class, 'showUploadStarsForm'])->name('csv.upload');
+Route::post('/stardata/processnewstars', [StarDataController::class, 'processNewStars'])->name('csv.process');

@@ -45,120 +45,144 @@ Generar Enlaces para Compartir Constelaciones
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
     <script>
-         // Scene setup
-         const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('threejs-container').appendChild(renderer.domElement);
+    // Scene setup
+    const scene = new THREE.Scene();
 
-        const controls = new THREE.OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.dampingFactor = 0.05;
+    // Set the camera position slightly above the planet's surface
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 5, 0);  // This places the camera slightly above the planet
+    camera.lookAt(0, 15, 0);  // Ensures the camera is looking upwards toward the stars
 
-        // Variables
-        const stars = [];
-        let currentConstellation = [];
-        let savedConstellations = [];
-        let drawing = false;
-        let hoveredLine = null;
+    const renderer = new THREE.WebGLRenderer();
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('threejs-container').appendChild(renderer.domElement);
 
-        // Create star field
-        function createStarField() {
-            const starGeometry = new THREE.SphereGeometry(1, 16, 16);
-            for (let i = 0; i < 100; i++) {
-                const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
-                const star = new THREE.Mesh(starGeometry, starMaterial);
-                star.position.set(
-                    Math.random() * 200 - 100,
-                    Math.random() * 200 - 100,
-                    Math.random() * 200 - 100
-                );
-                scene.add(star);
-                stars.push(star);
-            }
+    // OrbitControls setup with zoom disabled
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+    controls.enableZoom = false;  // Disable zoom
+
+    // Adjust the polar angle range to allow movement around the sky while keeping the horizon
+    controls.minPolarAngle = 0;  // Allow the user to look directly up
+    controls.maxPolarAngle = Math.PI - 0.3;  // Limit how far down they can look, preventing too much "below" the planet
+
+    controls.enablePan = false;  // Disable panning (horizontal movement)
+    controls.enableRotate = true;  // Ensure rotation is enabled
+
+    // Variables
+    const stars = [];
+    let currentConstellation = [];
+    let savedConstellations = [];
+    let drawing = false;
+    let hoveredLine = null;
+
+    // Create planet (positioned lower than the camera, visible as a horizon)
+    const planetGeometry = new THREE.SphereGeometry(10, 32, 32);
+    const planetMaterial = new THREE.MeshBasicMaterial({
+        color: 0x003366,
+        transparent: true,
+        opacity: 0.8,  // Very transparent to simulate a slight horizon effect
+        side: THREE.DoubleSide  // Ensure the planet is visible from the inside
+    });
+    const planet = new THREE.Mesh(planetGeometry, planetMaterial);
+    planet.position.set(0, -10, 0);  // Move the planet down so it appears like a horizon
+    scene.add(planet);
+
+    // Create star field
+    function createStarField() {
+        const starGeometry = new THREE.SphereGeometry(0.5, 16, 16);
+        for (let i = 0; i < 100; i++) {
+            const starMaterial = new THREE.MeshBasicMaterial({ color: 0xffffff });
+            const star = new THREE.Mesh(starGeometry, starMaterial);
+            star.position.set(
+                Math.random() * 200 - 100,
+                Math.random() * 200 - 100,
+                Math.random() * 200 - 100
+            );
+            scene.add(star);
+            stars.push(star);
         }
-        createStarField();
+    }
+    createStarField();
 
-        // Raycaster for interactions
-        const raycaster = new THREE.Raycaster();
-        const mouse = new THREE.Vector2();
+    // Raycaster for interactions
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
 
-        // Event listeners
-        window.addEventListener('click', onMouseClick);
-        window.addEventListener('mousemove', onMouseMove);
+    // Event listeners
+    window.addEventListener('click', onMouseClick);
+    window.addEventListener('mousemove', onMouseMove);
 
-        function onMouseClick(event) {
-            updateMousePosition(event);
-            raycaster.setFromCamera(mouse, camera);
+    function onMouseClick(event) {
+        updateMousePosition(event);
+        raycaster.setFromCamera(mouse, camera);
 
-            if (drawing) {
-                if (hoveredLine) {
-                    deleteLine(hoveredLine);
-                } else {
-                    const intersects = raycaster.intersectObjects(stars);
-                    if (intersects.length > 0) {
-                        const star = intersects[0].object;
-                        addStarToConstellation(star);
-                    }
+        if (drawing) {
+            if (hoveredLine) {
+                deleteLine(hoveredLine);
+            } else {
+                const intersects = raycaster.intersectObjects(stars);
+                if (intersects.length > 0) {
+                    const star = intersects[0].object;
+                    addStarToConstellation(star);
                 }
             }
         }
+    }
 
-        function onMouseMove(event) {
-            updateMousePosition(event);
-            raycaster.setFromCamera(mouse, camera);
+    function onMouseMove(event) {
+        updateMousePosition(event);
+        raycaster.setFromCamera(mouse, camera);
 
-            if (drawing) {
-                checkLineHover();
+        if (drawing) {
+            checkLineHover();
+        } else {
+            checkConstellationHover();
+        }
+    }
+
+    function updateMousePosition(event) {
+        const rect = renderer.domElement.getBoundingClientRect();
+        mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+        mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    }
+
+    function addStarToConstellation(star) {
+        if (currentConstellation.length > 0) {
+            const lastStar = currentConstellation[currentConstellation.length - 1].star;
+            const line = drawLine(lastStar.position, star.position, 0xffff00);
+            currentConstellation.push({ star, line });
+        } else {
+            currentConstellation.push({ star, line: null });
+        }
+    }
+
+    function drawLine(start, end, color) {
+        const material = new THREE.LineBasicMaterial({ color });
+        const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
+        const line = new THREE.Line(geometry, material);
+        scene.add(line);
+        return line;
+    }
+
+    function deleteLine(line) {
+        scene.remove(line);
+        const index = currentConstellation.findIndex(item => item.line === line);
+        if (index !== -1) {
+            if (index === 0) {
+                currentConstellation[1].line = null;
             } else {
-                checkConstellationHover();
+                currentConstellation[index - 1].line = null;
             }
+            currentConstellation.splice(index, 1);
         }
+        hoveredLine = null;
+    }
 
-        function updateMousePosition(event) {
-            const rect = renderer.domElement.getBoundingClientRect();
-            mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
-            mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
-        }
-
-        function addStarToConstellation(star) {
-            if (currentConstellation.length > 0) {
-                const lastStar = currentConstellation[currentConstellation.length - 1].star;
-                const line = drawLine(lastStar.position, star.position, 0xffff00);
-                currentConstellation.push({ star, line });
-            } else {
-                currentConstellation.push({ star, line: null });
-            }
-        }
-
-        function drawLine(start, end, color) {
-            const material = new THREE.LineBasicMaterial({ color });
-            const geometry = new THREE.BufferGeometry().setFromPoints([start, end]);
-            const line = new THREE.Line(geometry, material);
-            scene.add(line);
-            return line;
-        }
-
-        function deleteLine(line) {
-            scene.remove(line);
-            const index = currentConstellation.findIndex(item => item.line === line);
-            if (index !== -1) {
-                if (index === 0) {
-                    currentConstellation[1].line = null;
-                } else {
-                    currentConstellation[index - 1].line = null;
-                }
-                currentConstellation.splice(index, 1);
-            }
-            hoveredLine = null;
-        }
-
-
-        function checkLineHover() {
+    function checkLineHover() {
         hoveredLine = null;
         
-        // Create an array of lines to check
         const linesToCheck = currentConstellation
             .filter(item => item.line)
             .map(item => item.line);
@@ -170,7 +194,6 @@ Generar Enlaces para Compartir Constelaciones
             hoveredLine.material.color.setHex(0xff0000); // Change color on hover
         }
 
-        // Reset all other lines to default color
         currentConstellation.forEach(item => {
             if (item.line && item.line !== hoveredLine) {
                 item.line.material.color.setHex(0xffff00); // Default color
@@ -178,32 +201,11 @@ Generar Enlaces para Compartir Constelaciones
         });
     }
 
-        function distanceFromLine(point, line) {
-            const linePoints = line.geometry.attributes.position.array;
-            const start = new THREE.Vector3(linePoints[0], linePoints[1], linePoints[2]);
-            const end = new THREE.Vector3(linePoints[3], linePoints[4], linePoints[5]);
-            const lineDirection = end.clone().sub(start).normalize();
-            const pointToStart = point.clone().sub(start);
-            const projection = pointToStart.dot(lineDirection);
-
-            let closestPoint;
-            if (projection <= 0) {
-                closestPoint = start;
-            } else if (projection >= start.distanceTo(end)) {
-                closestPoint = end;
-            } else {
-                closestPoint = start.clone().add(lineDirection.multiplyScalar(projection));
-            }
-
-            return point.distanceTo(closestPoint);
-        }
-
-        function checkConstellationHover() {
+    function checkConstellationHover() {
         const constellationInfo = document.getElementById('constellation-info');
         constellationInfo.style.display = 'none';
 
         savedConstellations.forEach(constellation => {
-            // Reset all constellation lines to default color
             constellation.lines.forEach(line => {
                 line.material.color.setHex(0xaaaaaa); // Default color
             });
@@ -211,7 +213,6 @@ Generar Enlaces para Compartir Constelaciones
             const intersects = raycaster.intersectObjects(constellation.lines, true);
 
             if (intersects.length > 0) {
-                // If any line is intersected, change its color and show info
                 constellation.lines.forEach(line => {
                     line.material.color.setHex(0xffff00); // Highlight color
                 });
@@ -220,69 +221,79 @@ Generar Enlaces para Compartir Constelaciones
         });
     }
 
-        function showConstellationInfo(constellation, event) {
-            const constellationInfo = document.getElementById('constellation-info');
-            constellationInfo.textContent = constellation.name;
-            constellationInfo.style.display = 'block';
-            constellationInfo.style.left = event.clientX + 10 + 'px';
-            constellationInfo.style.top = event.clientY + 10 + 'px';
+    function showConstellationInfo(constellation, event) {
+        const constellationInfo = document.getElementById('constellation-info');
+        constellationInfo.textContent = constellation.name;
+        constellationInfo.style.display = 'block';
+        constellationInfo.style.left = event.clientX + 10 + 'px';
+        constellationInfo.style.top = event.clientY + 10 + 'px';
+    }
+
+    // UI Controls
+    const createBtn = document.getElementById('create-btn');
+    createBtn.addEventListener('click', toggleDrawing);
+
+    function toggleDrawing() {
+        drawing = !drawing;
+        if (drawing) {
+            createBtn.textContent = 'Done';
+            currentConstellation = [];
+        } else {
+            showNamePrompt();
         }
+    }
 
-        // UI Controls
-        const createBtn = document.getElementById('create-btn');
-        createBtn.addEventListener('click', toggleDrawing);
+    function showNamePrompt() {
+        document.getElementById('constellation-name-modal').style.display = 'block';
+    }
 
-        function toggleDrawing() {
-            drawing = !drawing;
-            if (drawing) {
-                createBtn.textContent = 'Done';
-                currentConstellation = [];
-            } else {
-                showNamePrompt();
+    document.getElementById('save-constellation').addEventListener('click', saveConstellation);
+
+    function saveConstellation() {
+        const name = document.getElementById('constellation-name').value;
+        if (name && currentConstellation.length > 0) {
+            const lines = [];
+            
+            // Ensure we include the first line if it exists
+            if (currentConstellation[0].line) {
+                lines.push(currentConstellation[0].line);
             }
-        }
-
-        function showNamePrompt() {
-            document.getElementById('constellation-name-modal').style.display = 'block';
-        }
-
-        document.getElementById('save-constellation').addEventListener('click', saveConstellation);
-
-        function saveConstellation() {
-            const name = document.getElementById('constellation-name').value;
-            if (name && currentConstellation.length > 0) {
-                const lines = currentConstellation
-                    .filter(item => item.line)
-                    .map(item => item.line);
-                
-                lines.forEach(line => line.material.color.setHex(0xaaaaaa));
-                
-                savedConstellations.push({ name, lines });
-                document.getElementById('constellation-name-modal').style.display = 'none';
-                createBtn.textContent = 'Create Constellation';
-                currentConstellation = [];
+            
+            // Add the rest of the lines
+            for (let i = 1; i < currentConstellation.length; i++) {
+                if (currentConstellation[i].line) {
+                    lines.push(currentConstellation[i].line);
+                }
             }
+            
+            // Change color of all lines to gray
+            lines.forEach(line => line.material.color.setHex(0xaaaaaa));
+            
+            savedConstellations.push({ name, lines });
+            document.getElementById('constellation-name-modal').style.display = 'none';
+            createBtn.textContent = 'Create Constellation';
+            currentConstellation = [];
         }
+    }
 
-        // Animation loop
-        function animate() {
-            requestAnimationFrame(animate);
-            controls.update();
-            renderer.render(scene, camera);
-        }
-        animate();
+    // Animation loop
+    function animate() {
+        requestAnimationFrame(animate);
+        controls.update();
+        renderer.render(scene, camera);
+    }
+    animate();
 
-        // Window resize handler
-        window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(window.innerWidth, window.innerHeight);
-        });
+    // Window resize handler
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
 
-        // Set initial camera position
-        camera.position.set(0, 100, 200);
-        camera.lookAt(0, 0, 0);
-    </script>
+
+
 @stop
 
 @section('footer')
