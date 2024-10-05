@@ -305,15 +305,7 @@ return [
     ],
     [
         'text' => 'login',
-        'topnav' => true,
         'url'=> 'login',
-        'topnav_right' => true,
-        'can'=> 'logged-in',
-    ],
-    [
-        'text' => 'register',
-        'topnav' => true,
-        'url'=> 'register',
         'topnav_right' => true,
         'can'=> 'logged-in',
     ],
@@ -324,13 +316,23 @@ return [
         'text' => 'search',
     ],
     [
+        'text' => 'Home',
+        'url' => '/',
+        'icon' => 'fas fa-fw fa-home',
+    ],
+    [
         'text' => 'Explore the Sky',
         'url' => 'explore',
-        'icon' => 'fas fa-fw fa-globe',
+        'icon' => 'fas fa-fw fa-sun',
         'submenu' => [
             [
-                'text' => 'Create Constellations',
-                'url' => 'create-constellations',
+                'text' => 'V1',
+                'url' => 'exploreV1',
+                'icon' => 'fas fa-fw fa-star-half',
+            ],
+            [
+                'text' => 'V2',
+                'url' => 'exploreV2',
                 'icon' => 'fas fa-fw fa-star',
             ],
         ],
@@ -341,25 +343,9 @@ return [
         'icon' => 'fas fa-fw fa-info-circle',
     ],
     [
-        'text' => 'Login and Settings',
-        'url' => 'login-settings',
-        'icon' => 'fas fa-fw fa-cog',
-    ],
-    [
         'text' => 'About',
         'url' => 'about',
         'icon' => 'fas fa-fw fa-question-circle',
-    ],
-    ['header' => 'account_settings'],
-    [
-        'text' => 'profile',
-        'url' => 'admin/settings',
-        'icon' => 'fas fa-fw fa-user',
-    ],
-    [
-        'text' => 'change_password',
-        'url' => 'admin/settings',
-        'icon' => 'fas fa-fw fa-lock',
     ],
 ],
 

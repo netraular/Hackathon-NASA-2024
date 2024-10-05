@@ -3,7 +3,7 @@
 @section('subtitle', 'Welcome page')
 
 @section('content_body')
-    Olis :3
+    Olis 2 :3
 @stop
 
 @section('footer')
