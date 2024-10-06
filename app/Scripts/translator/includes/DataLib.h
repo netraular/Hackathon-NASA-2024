@@ -18,7 +18,7 @@ public:
 
         double xs = ref_distance * cos(ref_DEC) * cos(ref_RA) - distance * cos(DEC) * cos(RA);
         double ys = ref_distance * cos(ref_DEC) * sin(ref_RA) - distance * cos(DEC) * sin(RA);
-        double zs = ref_distance * sin(ref_DEC) - DEC * sin(DEC);
+        double zs = ref_distance * sin(ref_DEC) - distance * sin(DEC);
 
         double xs2 = cos(theta) * cos(RA) * xs + cos(theta) * sin(RA) * ys - sin(theta) * zs;
         double ys2 = -sin(RA) * xs + cos(RA) * ys;

@@ -68,7 +68,6 @@
                     </div>
                 </div>
             </div>
-            <!-- Add more accordions as necessary -->
         </div>
     </div>
 
@@ -132,15 +131,20 @@
         height: 100%;
         background: url('path_to_your_starry_background_image.jpg') center center / cover no-repeat; /* Replace with your starry background image */
         z-index: -1; /* Keep it behind content */
-        opacity: 0.7; /* Adjust opacity for visibility */
+        animation: starAnimation 20s linear infinite;
     }
-    
+
+    @keyframes starAnimation {
+        0% { background-position: 0 0; }
+        100% { background-position: 1000px 1000px; }
+    }
+
     .cosmic-title {
         text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* Glow effect for title */
         animation: fadeIn 1.5s; /* Animation for title */
         margin-bottom: 50px; /* Space below title */
     }
-    
+
     .cosmic-text {
         color: rgba(255, 255, 255, 0.9); /* Slightly transparent white text */
         text-shadow: 0 0 5px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for better integration */
@@ -148,6 +152,7 @@
 
     .cosmic-card {
         backdrop-filter: blur(10px); /* Blur effect for cards */
+        background-color: rgba(0, 0, 0, 0.5); /* Dark background with transparency */
         border-radius: 15px; /* Rounded corners */
         transition: transform 0.3s ease; /* Smooth hover effect */
     }

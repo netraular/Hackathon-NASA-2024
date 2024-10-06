@@ -6,7 +6,9 @@
 
 <!-- Sección de fotos con fade en la parte superior con fondo negro espacial -->
 <div class="container-fluid" style="background-color: #0d1b2a; padding: 20px; text-align: center;">
-    <h4 class="text-white">✨ Stunning Views of Skies from Other Worlds:</h4>
+    <h4 class="text-center" style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 3em; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
+        ✨ Stunning Views of Skies from Other Worlds:
+    </h4>
     <div id="fade-images" style="position: relative; width: 80%; margin: 0 auto; height: 300px;">
         <img src="image1.jpg" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
         <img src="image2.jpg" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
@@ -17,8 +19,8 @@
 <!-- Separador -->
 <hr class="my-4" style="border-top: 2px solid #1b263b;">
 
-<!-- Título más vistoso para la vista del cielo -->
-<h2 class="text-center" style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 4em; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
+<!-- Título ajustado para la vista del cielo -->
+<h2 class="text-center" style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: normal; font-size: 3em;">
     🌌 A Breathtaking View of the Sky 🌌
 </h2>
 
@@ -28,7 +30,7 @@
     <div class="row justify-content-center">
         @php
             $constellations = [
-                ['name' => 'Traveling Star', 'user' => 'Galaxy01', 'image' => asset('storage/app/public/constellation1.jpg')],
+                ['name' => 'Traveling Star', 'user' => 'Galaxy01', 'image' => asset('images/constellation1.png')],
                 ['name' => 'Night Hunter', 'user' => 'AstroHunter', 'image' => asset('storage/app/public/constellation2.jpg')],
                 ['name' => 'Mystical Nebula', 'user' => 'SpaceDreamer', 'image' => asset('storage/app/public/constellation3.jpg')],
                 ['name' => 'Wings of Pegasus', 'user' => 'CosmicFlyer', 'image' => asset('storage/app/public/constellation4.jpg')]
@@ -38,7 +40,7 @@
         @foreach ($constellations as $index => $constellation)
             <div class="col-md-3 mb-3">
                 <div class="card" style="background-color: #243b55; color: white; border: 1px solid #1b9aaa; padding: 10px; border-radius: 8px;">
-                    <h5 style="font-family: 'Poppins', sans-serif; font-weight: bold; text-align: center; color: #00d4ff;">
+                    <h5 style="font-family: 'Poppins', sans-serif; font-weight: bold; text-align: center; color: #ff7e00;">
                         {{ $constellation['name'] }} - Created by: {{ $constellation['user'] }}
                     </h5>
                     <img src="{{ $constellation['image'] }}" alt="{{ $constellation['name'] }}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; background-color: black;">
@@ -61,7 +63,7 @@
 
 <!-- Texto dinámico y atractivo del proyecto debajo -->
 <div class="container text-center mt-5 mb-5">
-    <h4 style="color: #00d4ff; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 2.5em; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">
+    <h4 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 2.5em; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">
         🪅 About the Project:
     </h4>
     <p class="dynamic-text" style="font-size: 1.3em; color: #e0e0e0; line-height: 1.6;">
@@ -72,8 +74,8 @@
     </p>
 </div>
 
-<!-- Footer dinámico -->
-<footer class="bg-dark text-white text-center" style="position: relative; bottom: 0; width: 100%; padding: 20px;">
+<!-- Footer dinámico con más separación -->
+<footer class="bg-dark text-white text-center mt-5" style="position: relative; bottom: 0; width: 100%; padding: 30px;">
     <h5 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">🌌 Explore the Universe with Us!</h5>
     <p>🚀 Join our mission to inspire future astronomers and space explorers!</p>
 </footer>
@@ -189,4 +191,3 @@
         });
     </script>
 @endpush
-

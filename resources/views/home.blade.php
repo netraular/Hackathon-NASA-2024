@@ -8,6 +8,9 @@
                 <div class="card-header">{{ __('Dashboard') }}</div>
 
                 <div class="card-body">
+
+                <img src="{{URL::asset('/images/constellation1.png')}}" alt="profile Pic" height="200" width="200">
+{{URL::asset('/storage/constellation1.png')}}
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
