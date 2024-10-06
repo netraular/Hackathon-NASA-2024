@@ -34,6 +34,19 @@ public:
     double getDEC() const {
         return this->StarData.getDEC();
     }
+
+    double getX() const {
+        return this->StarData.getX();
+    }
+
+    double getY() const {
+        return this->StarData.getY();
+    }
+
+    double getZ() const {
+        return this->StarData.getZ();
+    }
+
     Data ProjectBodyOverStar(void) {
         return this->StarData.SphericalTransData(this->StarData);
     }
@@ -67,8 +80,9 @@ public:
 
         for (; begin != end; begin++)
         {
-            begin->SetData(this->exoplanetData.SphericalTransData(begin->GetData()));
-            // begin->realDistance(this->exoplanetData.getDistance());
+            begin->SetData(begin->GetData().SphericalTransData(this->exoplanetData));
+            // begin->SetData(this->exoplanetData.SphericalTransData(begin->GetData()));
+            begin->realDistance(this->exoplanetData.getDistance());
         }
     }
 

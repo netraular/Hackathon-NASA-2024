@@ -67,7 +67,6 @@ int main() {
             {
                 writer << begin2->GetName() << ",None," << begin2->getRA() << "," << begin2->getDEC() << ",0," << begin2->getDistance() << ",None" << "\n";
             }
-            exit(1);
         }
 
         reader.close();

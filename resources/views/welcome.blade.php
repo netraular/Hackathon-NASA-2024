@@ -5,16 +5,16 @@
 @section('content_body')
 
 <!-- Sección de fotos con fade en la parte superior con fondo negro espacial -->
-<div class="container-fluid" style="background-color: #0d1b2a; padding: 20px; text-align: center; margin: 0; padding: 0;"> <!-- Sin márgenes ni paddings -->
-    <h4 class="text-center" style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 3em; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
-        ✨ Stunning Views of Skies from Other Worlds:
-    </h4>
-    <div id="fade-images" class="d-flex justify-content-center" style="position: relative; width: 80%; height: 300px; margin: 0 auto;">
+<div class="container-fluid" style="background-color: #0d1b2a; padding: 20px; text-align: center; position: relative; overflow: hidden; margin: 0;"> <!-- Sin márgenes ni paddings -->
+    <div id="fade-images" class="d-flex justify-content-center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0;">
         <img src="{{ asset('images/1.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
         <img src="{{ asset('images/2.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
         <img src="{{ asset('images/3.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
         <img src="{{ asset('images/4.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
     </div>
+    <h4 class="text-center" style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 3em; position: relative; z-index: 1; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
+        ✨ Stunning Views of Skies from Other Worlds:
+    </h4>
 </div>
 
 <!-- Separador -->
@@ -26,7 +26,7 @@
 </h2>
 
 <!-- Contenido: Últimas constelaciones en horizontal -->
-<div class="container-fluid" style="padding: 0; margin: 0;"> <!-- Sin márgenes ni paddings -->
+<div class="container-fluid" style="padding: 0; margin: 0 !important;"> <!-- Sin márgenes ni paddings -->
     <h4 style="color: #00d4ff; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 2.5em; text-align: center; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">🌠 Latest Constellations:</h4>
     <div class="row justify-content-center">
         @php
@@ -39,12 +39,12 @@
         @endphp
 
         @foreach ($constellations as $index => $constellation)
-            <div class="col-md-3 mb-3">
+            <div class="col-md-3">
                 <div class="card" style="background-color: #243b55; color: white; border: 1px solid #1b9aaa; padding: 10px; border-radius: 8px;">
                     <h5 style="font-family: 'Poppins', sans-serif; font-weight: bold; text-align: center; color: #ff7e00;">
                         {{ $constellation['name'] }} - Created by: {{ $constellation['user'] }}
                     </h5>
-                    <img src="{{ $constellation['image'] }}" alt="{{ $constellation['name'] }}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; background-color: black;">
+                    <img src="{{ $constellation['image'] }}" alt="{{ $constellation['name'] }}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;  background-color: black;">
                     <div class="vote-buttons" style="display: flex; justify-content: space-between; align-items: center;">
                         <button class="btn btn-success" onclick="likeConstellation({{ $index + 1 }})" style="font-size: 12px;">
                             👍 Like
@@ -63,11 +63,11 @@
 </div>
 
 <!-- Texto dinámico y atractivo del proyecto debajo -->
-<div class="container text-center mt-5 mb-5" style="padding: 0;"> <!-- Sin paddings -->
+<div class="container text-center mt-5" style="padding: 0;"> <!-- Sin paddings -->
     <h4 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 2.5em; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">
         🪅 About the Project:
     </h4>
-    <p class="dynamic-text" style="font-size: 1.5em; color: #e0e0e0; line-height: 1.6; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);">
+    <p class="dynamic-text pb-3" style="font-size: 1.5em; color: #e0e0e0; line-height: 1.6; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);">
         🌌 **ExoSky!** is a project that aims to show how the night sky would look from various exoplanets.<br>
         🔭 Using real astronomical data, we transform the coordinates of stars as seen from Earth.<br>
         🚀 Our goal is to inspire young minds and spark their interest in space exploration!<br>
@@ -129,6 +129,7 @@
 
     .dynamic-text {
         animation: fadeIn 3s forwards;
+        margin:0px !important;
     }
 
     @keyframes fadeIn {
@@ -198,4 +199,3 @@
     });
 </script>
 @endpush
-

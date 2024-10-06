@@ -128,6 +128,8 @@
     /* Estilos personalizados */
     .cosmic-container {
         background: transparent; /* Fondo transparente para el contenedor principal */
+        position: relative; /* Posicionar en relación a otros elementos */
+        z-index: 1; /* Asegurar que el contenido esté sobre el fondo de estrellas */
     }
 
     /* Estilos del fondo */
@@ -140,6 +142,18 @@
         left: 0;
         z-index: -1;
         opacity: 0.9;
+    }
+
+    /* Efecto de partículas en el fondo */
+    .particle-background {
+        background-image: url('/path/to/particles-background.png');
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        z-index: -2;
+        opacity: 0.7;
     }
 
     /* Estilos para las tarjetas */
@@ -177,16 +191,9 @@
         margin-bottom: 20px;
     }
 
-    /* Efecto de estrellas en el fondo */
-    .particle-background {
-        background-image: url('/path/to/particles-background.png');
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: -2;
-        opacity: 0.7;
+    /* Asegurar que el contenido también sea transparente para ver el fondo */
+    .cosmic-card {
+        background: rgba(0, 0, 0, 0.5); /* Hacer las tarjetas transparentes */
     }
 </style>
 @endpush

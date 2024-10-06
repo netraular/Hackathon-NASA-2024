@@ -5,15 +5,7 @@
 @section('subtitle', 'Star Field')
 
 @section('content_body')
-    <div id="threejs-container">
-        <div id="info">
-            <div id="text_tutorial">
-                Haz clic en una estrella para ver sus coordenadas. Usa el mouse para rotar y el scroll para hacer zoom.
-                <button class="btn btn-outline-dark btn-sm" style="color:white" onclick="document.getElementById('text_tutorial').style.display = 'none';">X</button>
-            </div>
-        </div>
-        <div id="star-info" style="position: absolute; color: white; font-family: Arial, sans-serif; z-index: 1;"></div>
-    </div>
+
 
     @include("skyview.{$view}")
 
