@@ -4,6 +4,7 @@
 #include <string>
 #include <vector>
 #include "DataLib.h"
+#include <iostream>
 
 class ExoPlanet;
 
@@ -24,21 +25,43 @@ public:
     void SetData(const Data& data) { StarData = data; }
     void SetName(std::string name) { this->name = name; }
     void SetLight(double light) { this->Light = light; }
+    Data ProjectBodyOverStar(void) {
+        return this->StarData.SphericalTransData(this->StarData);
+    }
+    void    realDistance(double distExo)
+    {
+        this->StarData.setDistance(this->StarData.ExoPlanetToStarDistance(distExo));
+    }
+    friend std::ostream& operator<<(std::ostream& os, const Star& st);
 };
+
+std::ostream& operator<<(std::ostream& os, const Star& st)
+{
+    os << st.name;
+    return os;
+}
 
 class ExoPlanet {
 private:
     Data exoplanetData;
     std::string starName;
     std::string name;
-    std::vector<Star>   stars[1999];
+    std::vector<Star>   stars;
 
 public:
     ExoPlanet(std::string starName, std::string name, double distance, double RA, double DEC)
         : exoplanetData(distance, RA, DEC), starName(starName), name(name){}
 
-    Data ProjectBodyOverExoplanet(const Data& data) {
-        return exoplanetData.SphericalTransData(data);
+    void ProjectBodyOverExoplanet(void) {
+        std::vector<Star>::iterator begin = stars.begin();
+        std::vector<Star>::iterator end = stars.end();
+
+        this->exoplanetData = this->exoplanetData.SphericalTransData(this->exoplanetData);
+        for (; begin != end; begin++)
+        {
+            begin->SetData(begin->ProjectBodyOverStar());
+            begin->realDistance(this->exoplanetData.getDistance());
+        }
     }
 
     std::string GetName() const {
@@ -46,12 +69,12 @@ public:
     }
 
     std::string GetNameFirstStar() const {
-        return this->stars->GetName();
+        return this->stars[0].GetName();
     }
 
     void    push_star(Star newStar)
     {
-        this->stars->push_back(newStar);
+        this->stars.push_back(newStar);
     }
 };
 

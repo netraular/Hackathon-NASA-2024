@@ -10,10 +10,15 @@
 int main() {
     std::vector<ExoPlanet>  planets;
     std::string CSVFile = "./output.csv";
+    std::string CSVFile2 = "./new_output.csv";
 
     try {
-        std::ifstream reader(CSVFile.c_str());
+        std::ifstream reader(CSVFile.c_str());\
+        std::ifstream writer(CSVFile2.c_str());
         if (!reader.is_open()) {
+            throw std::runtime_error("Could not open the file.");
+        }
+        if (!writer.is_open()) {
             throw std::runtime_error("Could not open the file.");
         }
 
@@ -24,6 +29,7 @@ int main() {
         while (std::getline(reader, line)) {
             if (isFirstLine) {
                 isFirstLine = false;
+                writer << line << "\n";
                 continue;
             }
 
@@ -32,7 +38,6 @@ int main() {
 
             for (int col = 0; col < 7; col++) {
                 std::getline(ss, values[col], ',');
-                // std::cout << "Columna " << col + 1 << ": " << values[col] << std::endl;
             }
 
             if (i % 2000 == 0)
@@ -42,8 +47,9 @@ int main() {
             }
             else
             {
+
                 Star    newStar(values[0], std::stod(values[5]),std::stod(values[2]),std::stod(values[3]));
-                planets[0].push_star(newStar);
+                planets[int(i / 2000)].push_star(newStar);
             }
             i++;
         }
@@ -53,7 +59,8 @@ int main() {
 
         for (; begin != end; begin++)
         {
-            std::cout << begin->GetName() << std::endl;
+            // std::cout << begin->GetNameFirstStar() << std::endl;
+            begin->ProjectBodyOverExoplanet();
         }
 
         reader.close();

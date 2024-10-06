@@ -27,8 +27,8 @@ public:
         return Data(sqrt(pow(xs2, 2) + pow(ys2, 2) + pow(zs2, 2)), asin(zs2 / sqrt(pow(xs2, 2) + pow(ys2, 2) + pow(zs2, 2))), atan2(ys2, xs2));
     }
 
-    double ExoPlanetToStarDistance(double DistStar) const {
-        return sqrt(pow(DistStar, 2) - pow(distance, 2));
+    double ExoPlanetToStarDistance(double DistExo) const {
+        return sqrt(abs(pow(distance, 2) - pow(DistExo, 2)));
     }
 
     double getDistance() const { return distance; }

@@ -15,7 +15,13 @@
         <div id="star-info" style="position: absolute; color: white; font-family: Arial, sans-serif; z-index: 1;"></div>
     </div>
 
-    @include('skyview.exoskyV3')
+    @include("skyview.{$view}")
+
+    @if(isset($errorMessage))
+        <script>
+            alert("{{ $errorMessage }}");
+        </script>
+    @endif
 @stop
 
 @section('footer')

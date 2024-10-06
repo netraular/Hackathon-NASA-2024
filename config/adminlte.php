@@ -340,6 +340,11 @@ return [
                 'url' => 'exploreV3',
                 'icon' => 'fas fa-fw fa-star',
             ],
+            [
+                'text' => 'PlanetMenu',
+                'url' => 'exploreV3',
+                'icon' => 'fas fa-fw fa-star',
+            ],
         ],
     ],
     [
