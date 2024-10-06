@@ -1,4 +1,4 @@
-# EXOSKY! 🚀
+# Cosmoscape 🚀
 
 🌌 **Explore the Night Sky from Exoplanets**
 
