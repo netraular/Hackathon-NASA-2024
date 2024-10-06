@@ -1,4 +1,4 @@
-# Project Name 🚀
+# EXOSKY! 🚀
 
 🌌 **Explore the Night Sky from Exoplanets**
 

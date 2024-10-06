@@ -4,14 +4,14 @@
 
 @section('content_body')
 
-<!-- Fondo del contenedor -->
+<!-- Background of the container -->
 <div class="cosmic-background"
     style="min-height: 100vh; background-image: url('{{ asset('images/background_space.png') }}'); background-size: cover; background-position: center; color: white;">
     <!-- <div class="cosmic-backround"> -->
-    <!-- Sección de fotos con fade en la parte superior -->
+    <!-- Section for fading images at the top -->
     <div class="container-fluid"
         style="padding: 20px; text-align: center; position: relative; overflow: hidden; margin: 0;">
-        <!-- Sin márgenes ni paddings -->
+        <!-- No margins or paddings -->
         <div id="fade-images" class="d-flex justify-content-center"
             style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0;">
             <img src="{{ asset('images/1.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
@@ -21,21 +21,21 @@
         </div>
         <h4 class="text-center"
             style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 3em; position: relative; z-index: 1; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
-            👓 Informations and resources:
+            👓 Information and resources:
         </h4>
 
     </div>
-    <!-- Separador -->
+    <!-- Separator -->
     <hr class="my-4" style="border-top: 2px solid #1b263b;">
 
-    <!-- Contenido: Bienvenida -->
+    <!-- Content: Welcome -->
     <div class="container-fluid mt-5 pb-2 mb-0 text-center position-relative cosmic-container ">
 
-        <!-- Tutorial y descargas -->
+        <!-- Tutorial and downloads -->
         <div class="row mb-5 justify-content-center">
             <div class="col-md-12">
-                <div class="card h-100 rounded-3 bg-dark text-light border-0 cosmic-card"> <!-- Fondo oscuro -->
-                    <div class="card-body cosmic-interactive-card"> <!-- Tarjeta interactiva -->
+                <div class="card h-100 rounded-3 bg-dark text-light border-0 cosmic-card"> <!-- Dark background -->
+                    <div class="card-body cosmic-interactive-card"> <!-- Interactive card -->
                         <h3 class="card-title cosmic-text">Operation Tutorial</h3>
                         <p class="card-text cosmic-text">Learn how to navigate our website and make the most of its
                             features.</p>
@@ -47,7 +47,7 @@
 
         <hr class="border-light">
 
-        <!-- Sección de características del proyecto -->
+        <!-- Project Features Section -->
         <div class="mb-5">
             <h2 class="mb-4 cosmic-text">Project Features 🌟</h2>
             <div class="row g-4 justify-content-center">
@@ -55,10 +55,9 @@
                     <a href="https://nasa24.netshiba.com/exploreV1">
                         <div class="feature-card">
                             <i class="fas fa-map-marked-alt fa-3x mb-3 feature-icon"></i>
-                            <h4 class="cosmic-text">Mapa Interactivo del Cielo Nocturno</h4>
-                            <p class="cosmic-text">Explora el cielo nocturno de los diferentes exoplanetas en nuestra
-                                base
-                                de datos con un mapa interactivo.</p>
+                            <h4 class="cosmic-text">Interactive Night Sky Map</h4>
+                            <p class="cosmic-text">Explore the night sky of different exoplanets in our
+                                database with an interactive map.</p>
                         </div>
                     </a>
                 </div>
@@ -66,9 +65,9 @@
                     <a href="https://nasa24.netshiba.com/exploreV2">
                         <div class="feature-card">
                             <i class="fas fa-drafting-compass fa-3x mb-3 feature-icon"></i>
-                            <h4 class="cosmic-text">Creación de Constelaciones Personalizada</h4>
-                            <p class="cosmic-text">Diseña tus propias constelaciones y personaliza tu experiencia de
-                                observación.</p>
+                            <h4 class="cosmic-text">Custom Constellation Creation</h4>
+                            <p class="cosmic-text">Design your own constellations and personalize your
+                                observation experience.</p>
                         </div>
                     </a>
                 </div>
@@ -76,9 +75,9 @@
                     <a href="https://nasa24.netshiba.com/">
                         <div class="feature-card">
                             <i class="fas fa-vote-yea fa-3x mb-3 feature-icon"></i>
-                            <h4 class="cosmic-text">Votación de Constelaciones</h4>
-                            <p class="cosmic-text">Participa y vota por tus constelaciones favoritas creadas por la
-                                comunidad.</p>
+                            <h4 class="cosmic-text">Constellation Voting</h4>
+                            <p class="cosmic-text">Participate and vote for your favorite constellations created by the
+                                community.</p>
                         </div>
                     </a>
                 </div>
@@ -88,9 +87,8 @@
                         <div class="feature-card">
                             <i class="fas fa-download fa-3x mb-3 feature-icon"></i>
                             <h4 class="cosmic-text">Download Data</h4>
-                            <p class="cosmic-text">Puedes descargarte los datos de los exoplanetas y estrellas en
-                                formato
-                                CSV.</p>
+                            <p class="cosmic-text">You can download the data of exoplanets and stars in
+                                CSV format.</p>
                         </div>
                     </a>
                 </div>
@@ -98,10 +96,9 @@
                     <a href="https://nasa24.netshiba.com/stardata/uploadstars">
                         <div class="feature-card">
                             <i class="fas fa-upload fa-3x mb-3 feature-icon"></i>
-                            <h4 class="cosmic-text">Carga de Datos</h4>
-                            <p class="cosmic-text">Sube tus propios datos de planetas y estrellas para enriquecer
-                                nuestra
-                                base de datos.</p>
+                            <h4 class="cosmic-text">Data Upload</h4>
+                            <p class="cosmic-text">Upload your own planet and star data to enrich
+                                our database.</p>
                         </div>
                     </a>
                 </div>
@@ -110,7 +107,7 @@
 
         <hr class="border-light">
 
-        <!-- Sección de definiciones -->
+        <!-- Definitions Section -->
         <div class="mb-5">
             <h2 class="mb-4 cosmic-text">Definitions 🔭</h2>
             <div class="row g-4 justify-content-center">
@@ -160,7 +157,7 @@
 
         <hr class="border-light">
 
-        <!-- Sección de bibliografía -->
+        <!-- Bibliography Section -->
         <div class="bibliography-section">
             <h2 class="mb-4 cosmic-text">Bibliography 📚</h2>
             <div class="row g-4 justify-content-center">
@@ -176,8 +173,7 @@
                     <a href="https://exoplanets.nasa.gov/what-is-an-exoplanet/overview/" target="_blank">
                         <div class="feature-card bg-transparent text-light border border-white rounded-3">
                             <h4 class="cosmic-text">NASA's Exoplanet Exploration</h4>
-                            <p class="cosmic-text">Explore NASA's website for the latest discoveries about our universe.
-                            </p>
+                            <p class="cosmic-text">Explore NASA's efforts in discovering and studying exoplanets.</p>
                         </div>
                     </a>
                 </div>
@@ -186,144 +182,28 @@
 
     </div>
 </div>
-<!-- Footer dinámico con más separación -->
-@stop
 
+@endsection
 
+@section('scripts')
+<script>
+    $(document).ready(function() {
+        // Fade-in effect for images
+        let images = $("#fade-images img");
+        let currentIndex = 0;
 
-@section('footer')
-<div style="text-align: center; margin: 0;"> <!-- Centrado y sin margen -->
-    <h5
-        style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">
-        🌌 Explore the Universe with Us!</h5>
-    <p style="text-align: center;"> <!-- Centrando el texto del párrafo -->
-        🚀 Join our mission to inspire future astronomers and space explorers!
-    </p>
-</div>
-
-
-@stop
-
-@push('css')
-    <style>
-        /* Efecto de fade para las imágenes */
-        #fade-images img {
-            animation: fadeEffect 12s infinite;
-            /* Aumentar el tiempo para un efecto más suave */
+        function fadeImages() {
+            images.eq(currentIndex).css("opacity", 0).animate({ opacity: 1 }, 3000, function() {
+                setTimeout(function() {
+                    images.eq(currentIndex).animate({ opacity: 0 }, 3000, function() {
+                        currentIndex = (currentIndex + 1) % images.length; // Move to next image
+                        fadeImages(); // Recursive call for the next image
+                    });
+                }, 2000); // Delay before fading out
+            });
         }
 
-        @keyframes fadeEffect {
-            0% {
-                opacity: 1;
-            }
-
-            33% {
-                opacity: 0;
-            }
-
-            66% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-            }
-        }
-
-        /* Colores del espacio */
-        body {
-            background: linear-gradient(to bottom, #000000, #3f0051);
-            /* Degradado de negro a lila oscuro */
-            margin: 0;
-            /* Eliminando margen predeterminado del body */
-            padding: 0;
-            /* Eliminando padding predeterminado del body */
-        }
-
-        .container-fluid {
-            padding: 0;
-            /* Sin padding en el contenedor */
-            margin: 0;
-            /* Sin margen en el contenedor */
-        }
-
-        .bibliography-section {
-            margin-bottom: 0 !important;
-            /* Force the margin-bottom to be zero */
-        }
-
-        .card {
-            background-color: #1e3a5f;
-        }
-
-        .btn-outline-light {
-            border-color: #1b9aaa;
-            color: #1b9aaa;
-        }
-
-        .btn-outline-light:hover {
-            background-color: #1b9aaa;
-            color: white;
-        }
-
-        .dynamic-text {
-            animation: fadeIn 3s forwards;
-            margin: 0px !important;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes slideIn {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        .content-wrapper {
-            background-color: #121212;
-            /* Color de fondo oscuro */
-            color: #ffffff;
-            /* Color de texto para que sea legible */
-        }
-
-        .main-footer {
-            background-color: #343a40;
-            /* Color de fondo oscuro */
-            color: #ffffff;
-            /* Color de texto para que sea legible */
-        }
-    </style>
-@endpush
-
-@push('js')
-    <script>
-        // Lógica de imágenes con fade
-        let currentImage = 0;
-        const images = document.querySelectorAll('#fade-images img');
-
-        function changeImage() {
-            images[currentImage].style.opacity = 0; // Desvanecer la imagen actual
-            currentImage = (currentImage + 1) % images.length; // Pasar a la siguiente imagen
-            images[currentImage].style.opacity = 1; // Mostrar la siguiente imagen
-        }
-
-        // Iniciar el cambio de imagen cada 6 segundos
-        setInterval(changeImage, 6000);
-    </script>
-@endpush
+        fadeImages(); // Start the fading effect
+    });
+</script>
+@endsection
