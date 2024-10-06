@@ -65,7 +65,7 @@ int main() {
             std::vector<Star>::iterator    end2 = stars.end();
             for (; begin2 != end2; begin2++)
             {
-                writer << begin2->GetName() << ",None," << begin2->getRA() << "," << begin2->getDEC() << ",0," << begin2->getDistance() << ",None" << "\n";
+                writer << begin2->GetName() << ",None," << begin2->getX() << "," << begin2->getY() << ",0," << begin2->getZ() << ",None" << "\n";
             }
         }
 

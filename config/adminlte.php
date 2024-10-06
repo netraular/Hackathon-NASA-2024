@@ -345,6 +345,11 @@ return [
                 'url' => 'skyview/exoplanets', // Modificado para apuntar a /skyview/exoplanets
                 'icon' => 'fas fa-fw fa-globe',
             ],
+            [
+                'text' => 'Data planet',
+                'url' => 'skyview/exoplanet/1', // Modificado para apuntar a /skyview/exoplanets
+                'icon' => 'fas fa-fw fa-star',
+            ],
         ],
     ],
     [

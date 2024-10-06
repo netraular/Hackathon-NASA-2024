@@ -1,17 +1,18 @@
 <div id="threejs-container">
     <div id="info">
         <div id="text_tutorial">
-HOLA            <button class="btn btn-outline-dark btn-sm" style="color:white" id="hide-tutorial">X</button>
+            Haz clic en una estrella para ver sus coordenadas. Usa el mouse para rotar.
+            <button class="btn btn-outline-dark btn-sm" style="color:white" id="hide-tutorial">X</button>
         </div>
     </div>
     <div id="star-info" style="position: absolute; color: white; font-family: Arial, sans-serif; z-index: 1;"></div>
+    <div id="angle-display" style="position: absolute; top: 30px; right: 270px; color: white; z-index: 1;">Ángulo: 0°</div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
 
 <script>
-    // Asegurarse de que el script se ejecute después de que el DOM esté cargado
     document.addEventListener('DOMContentLoaded', function() {
         // Ocultar el text_tutorial cuando se haga clic en el botón
         const hideTutorialButton = document.getElementById('hide-tutorial');
@@ -30,16 +31,9 @@ HOLA            <button class="btn btn-outline-dark btn-sm" style="color:white" 
         const container = document.getElementById('threejs-container');
         container.appendChild(renderer.domElement);
 
-        // Posicionar la cámara sobre el origen (0, 0, 50), mirando hacia abajo al centro (0, 0, 0)
-        camera.position.set(0, 30, 0); // Cámara encima del origen
-        camera.lookAt(0, 0, 0); // Apunta al centro del planeta
-
-        // Crear un planeta justo debajo de la cámara
-        const planetGeometry = new THREE.SphereGeometry(10, 32, 32);
-        const planetMaterial = new THREE.MeshBasicMaterial({ color: 0x2a9d8f });
-        const planet = new THREE.Mesh(planetGeometry, planetMaterial);
-        planet.position.set(0, -10, 0);  // Coloca el planeta debajo de la cámara
-        scene.add(planet);
+        // Añadir un helper para visualizar los ejes en el centro
+        const axesHelper = new THREE.AxesHelper(20); // Muestra los ejes de 20 unidades de longitud
+        scene.add(axesHelper);
 
         // Crear estrellas en posiciones aleatorias alrededor del punto 0,0,0
         const stars = [];
@@ -57,17 +51,26 @@ HOLA            <button class="btn btn-outline-dark btn-sm" style="color:white" 
         }
         createStars();
 
+        // Posicionar la cámara en el centro del espacio
+        camera.position.set(0, 0, 10); // La cámara en el punto (0,0,10), mirando hacia el centro
+
         // Controles de la cámara con restricciones
         const controls = new THREE.OrbitControls(camera, renderer.domElement);
         controls.enableDamping = true;
         controls.dampingFactor = 0.05;
-        controls.enableZoom = true;             // Permitir zoom
+        controls.enableZoom = false;            // Desactivar zoom
         controls.enableRotate = true;           // Permitir rotar
-        controls.maxPolarAngle = Math.PI / 2;   // Limitar rotación hacia arriba a 90 grados
-        controls.minPolarAngle = 0;             // Limitar rotación hacia abajo a 0 grados
+        controls.maxPolarAngle = Math.PI ;   // Limitar rotación hacia arriba a 180 grados
+        controls.minPolarAngle = -Math.PI;      // Limitar rotación hacia abajo a -180 grados
         controls.screenSpacePanning = false;    // Deshabilita el panning
-        controls.maxDistance = 100;             // Limitar zoom máximo
-        controls.minDistance = 20;              // Limitar zoom mínimo
+        controls.target.set(0, 0, 0);           // La cámara mira hacia el centro (0, 0, 0)
+
+        // Mostrar ángulo de rotación
+        const angleDisplay = document.getElementById('angle-display');
+        function updateAngleDisplay() {
+            const phi = THREE.MathUtils.radToDeg(controls.getPolarAngle()); // Ángulo hacia arriba o abajo
+            angleDisplay.innerText = `Ángulo: ${phi.toFixed(2)}°`;
+        }
 
         // Raycaster para detectar clics en las estrellas
         const raycaster = new THREE.Raycaster();
@@ -82,18 +85,13 @@ HOLA            <button class="btn btn-outline-dark btn-sm" style="color:white" 
             mouse.y = -(offsetY / container.clientHeight) * 2 + 1;
 
             raycaster.setFromCamera(mouse, camera);
-            const intersects = raycaster.intersectObjects([planet, ...stars]);
+            const intersects = raycaster.intersectObjects(stars);
 
             const starInfo = document.getElementById('star-info');
             if (intersects.length > 0) {
-                const object = intersects[0].object;
-                if (object === planet) {
-                    console.log('Has pulsado el planeta.');
-                } else {
-                    const star = object;
-                    const { x, y, z } = star.position;
-                    starInfo.innerText = `Coordenadas de la estrella: X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, Z: ${z.toFixed(2)}`;
-                }
+                const star = intersects[0].object;
+                const { x, y, z } = star.position;
+                starInfo.innerText = `Coordenadas de la estrella: X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, Z: ${z.toFixed(2)}`;
                 starInfo.style.left = event.clientX + 'px';
                 starInfo.style.top = event.clientY + 'px';
                 starInfo.style.display = 'block';
@@ -105,6 +103,7 @@ HOLA            <button class="btn btn-outline-dark btn-sm" style="color:white" 
         function animate() {
             requestAnimationFrame(animate);
             controls.update();
+            updateAngleDisplay(); // Actualiza el ángulo en pantalla
             renderer.render(scene, camera);
         }
         animate();

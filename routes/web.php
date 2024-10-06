@@ -26,9 +26,12 @@ Route::get('/about', function () {
 });
 
 
-Route::get('/skyview/{view?}', [SkyViewController::class, 'index'])
-    ->where('view', '[A-Za-z0-9\s_\-\*]+')
-    ->defaults('view', 'exoplanets');
+
+Route::get('/skyview/exoplanets', [SkyViewController::class, 'exoplanets']);
+Route::get('/skyview/exoskyV3', [SkyViewController::class, 'exoskyV3']);
+
+Route::get('/skyview/exoplanet/{id}', [SkyViewController::class, 'exoplanet'])
+    ->where('id', '[0-9]+');
     
 Route::get('/test-script', [StarDataController::class, 'testScript'])->name('test.script');
 Route::get('/stardata/uploadstars', [StarDataController::class, 'showUploadStarsForm'])->name('csv.upload');

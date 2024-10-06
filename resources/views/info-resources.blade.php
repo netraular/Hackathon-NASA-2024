@@ -3,30 +3,42 @@
 @section('subtitle', 'Welcome Page')
 
 @section('content_body')
-<div class="container-fluid my-5 text-center position-relative cosmic-container">
-    <!-- Main Title -->
-    <div class="mb-5">
-        <h1 class="display-4 fw-bold cosmic-title">Welcome to ChatGPT for Exoplanet Information 🌌</h1>
-        <p class="lead cosmic-text">Explore the universe with us and discover fascinating facts about exoplanets.</p>
-    </div>
 
-    <!-- Tutorial and Downloads Section -->
+<!-- Fondo del contenedor -->
+<div class="cosmic-background" style="min-height: 100vh; background-image: url('{{ asset('images/background_space.png') }}'); background-size: cover; background-position: center; color: white;">
+<!-- <div class="cosmic-backround"> -->
+<!-- Sección de fotos con fade en la parte superior -->
+<div class="container-fluid"
+    style="padding: 20px; text-align: center; position: relative; overflow: hidden; margin: 0;">
+    <!-- Sin márgenes ni paddings -->
+    <div id="fade-images" class="d-flex justify-content-center"
+        style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0;">
+        <img src="{{ asset('images/1.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+        <img src="{{ asset('images/2.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+        <img src="{{ asset('images/3.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+        <img src="{{ asset('images/4.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+    </div>
+    <h4 class="text-center"
+        style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 3em; position: relative; z-index: 1; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
+        👓 Informations and resources:
+    </h4>
+
+</div>
+<!-- Separador -->
+<hr class="my-4" style="border-top: 2px solid #1b263b;">
+
+<!-- Contenido: Bienvenida -->
+<div class="container-fluid my-5 text-center position-relative cosmic-container">
+
+    <!-- Tutorial y descargas -->
     <div class="row mb-5 justify-content-center">
-        <div class="col-md-6">
-            <div class="card h-100 rounded-3 bg-transparent text-light border-0 cosmic-card">
-                <div class="card-body">
+        <div class="col-md-12">
+            <div class="card h-100 rounded-3 bg-dark text-light border-0 cosmic-card"> <!-- Fondo oscuro -->
+                <div class="card-body cosmic-interactive-card"> <!-- Tarjeta interactiva -->
                     <h3 class="card-title cosmic-text">Operation Tutorial</h3>
-                    <p class="card-text cosmic-text">Learn how to navigate our website and make the most of its features.</p>
+                    <p class="card-text cosmic-text">Learn how to navigate our website and make the most of its
+                        features.</p>
                     <a href="#" class="btn btn-primary">View Tutorial</a>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-6 mt-4 mt-md-0">
-            <div class="card h-100 rounded-3 bg-transparent text-light border-0 cosmic-card">
-                <div class="card-body">
-                    <h3 class="card-title cosmic-text">Download Data</h3>
-                    <p class="card-text cosmic-text">Get the generated data in your local formats, CSV or ZIP.</p>
-                    <a href="#" class="btn btn-success">Download Now</a>
                 </div>
             </div>
         </div>
@@ -34,47 +46,58 @@
 
     <hr class="border-light">
 
-    <!-- Project Features with Cards -->
+    <!-- Sección de características del proyecto -->
     <div class="mb-5">
         <h2 class="mb-4 cosmic-text">Project Features 🌟</h2>
         <div class="row g-4 justify-content-center">
-            <!-- Feature 1: Mapa Interactivo -->
             <div class="col-md-4">
                 <a href="https://nasa24.netshiba.com/exploreV1">
                     <div class="feature-card">
                         <i class="fas fa-map-marked-alt fa-3x mb-3 feature-icon"></i>
                         <h4 class="cosmic-text">Mapa Interactivo del Cielo Nocturno</h4>
-                        <p class="cosmic-text">Explora el cielo nocturno de los diferentes exoplanetas en nuestra base de datos con un mapa interactivo.</p>
+                        <p class="cosmic-text">Explora el cielo nocturno de los diferentes exoplanetas en nuestra base
+                            de datos con un mapa interactivo.</p>
                     </div>
                 </a>
             </div>
-            <!-- Feature 2: Creación de Constelaciones -->
             <div class="col-md-4">
                 <a href="https://nasa24.netshiba.com/exploreV2">
                     <div class="feature-card">
                         <i class="fas fa-drafting-compass fa-3x mb-3 feature-icon"></i>
                         <h4 class="cosmic-text">Creación de Constelaciones Personalizada</h4>
-                        <p class="cosmic-text">Diseña tus propias constelaciones y personaliza tu experiencia de observación.</p>
+                        <p class="cosmic-text">Diseña tus propias constelaciones y personaliza tu experiencia de
+                            observación.</p>
                     </div>
                 </a>
             </div>
-            <!-- Feature 3: Votación de Constelaciones -->
             <div class="col-md-4">
                 <a href="https://nasa24.netshiba.com/">
                     <div class="feature-card">
                         <i class="fas fa-vote-yea fa-3x mb-3 feature-icon"></i>
                         <h4 class="cosmic-text">Votación de Constelaciones</h4>
-                        <p class="cosmic-text">Participa y vota por tus constelaciones favoritas creadas por la comunidad.</p>
+                        <p class="cosmic-text">Participa y vota por tus constelaciones favoritas creadas por la
+                            comunidad.</p>
                     </div>
                 </a>
             </div>
-            <!-- Feature 4: Carga de Datos -->
+            
+            <div class="col-md-4">
+                <a href=""> 
+                    <div class="feature-card">
+                        <i class="fas fa-download fa-3x mb-3 feature-icon"></i>
+                        <h4 class="cosmic-text">Download Data</h4>
+                        <p class="cosmic-text">Puedes descargarte los datos de los exoplanetas y estrellas en formato
+                            CSV.</p>
+                    </div>
+                </a>
+            </div>
             <div class="col-md-4">
                 <a href="https://nasa24.netshiba.com/stardata/uploadstars">
                     <div class="feature-card">
                         <i class="fas fa-upload fa-3x mb-3 feature-icon"></i>
                         <h4 class="cosmic-text">Carga de Datos</h4>
-                        <p class="cosmic-text">Sube tus propios datos de planetas y estrellas para enriquecer nuestra base de datos.</p>
+                        <p class="cosmic-text">Sube tus propios datos de planetas y estrellas para enriquecer nuestra
+                            base de datos.</p>
                     </div>
                 </a>
             </div>
@@ -83,117 +106,214 @@
 
     <hr class="border-light">
 
-    <!-- Definitions with Cards -->
+    <!-- Sección de definiciones -->
     <div class="mb-5">
         <h2 class="mb-4 cosmic-text">Definitions 🔭</h2>
         <div class="row g-4 justify-content-center">
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 cosmic-card">
-                    <div class="card-body">
-                        <h4 class="card-title cosmic-text">Exoplanet 🌍</h4>
-                        <p class="card-text cosmic-text">An exoplanet is a planet that exists outside our solar system, orbiting a star other than the Sun. They vary in size, composition, and distance, from rocky ones like Earth to gas giants like Jupiter 🪐.</p>
+                <a href="https://es.wikipedia.org/wiki/Exoplaneta" target="_blank">
+                    <div
+                        class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 cosmic-card interactive-card">
+                        <div class="card-body">
+                            <h4 class="card-title cosmic-text">Exoplanet 🌍</h4>
+                            <p class="card-text cosmic-text">An exoplanet is a planet that exists outside our solar
+                                system, orbiting a star other than the Sun. They vary in size, composition, and
+                                distance, from rocky ones like Earth to gas giants like Jupiter 🪐.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 cosmic-card">
-                    <div class="card-body">
-                        <h4 class="card-title cosmic-text">Star 🌟</h4>
-                        <p class="card-text cosmic-text">A star is a massive and luminous sphere of hot gas, primarily hydrogen and helium, held together by its own gravity. Nuclear fusion occurs in its core, releasing energy in the form of light and heat ☀️.</p>
+                <a href="https://es.wikipedia.org/wiki/Estrella" target="_blank">
+                    <div
+                        class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 cosmic-card interactive-card">
+                        <div class="card-body">
+                            <h4 class="card-title cosmic-text">Star 🌟</h4>
+                            <p class="card-text cosmic-text">A star is a massive and luminous sphere of hot gas,
+                                primarily hydrogen and helium, held together by its own gravity. Nuclear fusion occurs
+                                in its core, releasing energy in the form of light and heat ☀️.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
             <div class="col-md-4">
-                <div class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 cosmic-card">
-                    <div class="card-body">
-                        <h4 class="card-title cosmic-text">Reference Frame 📏</h4>
-                        <p class="card-text cosmic-text">A reference frame is a way to measure and describe the position or movement of objects in space. It includes a set of points or axes that help understand the relationships between different elements 🌌.</p>
+                <a href="https://es.wikipedia.org/wiki/Constelaci%C3%B3n" target="_blank">
+                    <div
+                        class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 cosmic-card interactive-card">
+                        <div class="card-body">
+                            <h4 class="card-title cosmic-text">Constellation ⭐</h4>
+                            <p class="card-text cosmic-text">A constellation is a group of stars that form a
+                                recognizable pattern in the night sky. Historically, constellations have been used for
+                                navigation and storytelling 🌌.</p>
+                        </div>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>
+
+    <hr class="border-light">
+
+    <!-- Sección de bibliografía -->
+    <div class="bibliography-section" >
+        <h2 class="mb-4 cosmic-text">Bibliography 📚</h2>
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-6">
+                <a href="https://www.cosmos.esa.int/web/gaia" target="_blank">
+                    <div class="feature-card bg-transparent text-light border border-white rounded-3">
+                        <h4 class="cosmic-text">Gaia Mission</h4>
+                        <p class="cosmic-text">Learn more about the Gaia mission to map the Milky Way.</p>
+                    </div>
+                </a>
+            </div>
+            <div class="col-md-6">
+                <a href="https://exoplanets.nasa.gov/what-is-an-exoplanet/overview/" target="_blank">
+                    <div class="feature-card bg-transparent text-light border border-white rounded-3">
+                        <h4 class="cosmic-text">NASA's Exoplanet Exploration</h4>
+                        <p class="cosmic-text">Explore NASA's website for the latest discoveries about our universe.</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
 </div>
 
-<div class="stars"></div> <!-- Div for animated stars -->
-<div class="particle-background"></div> <!-- Div for particle stars -->
-@endsection
+</div>
+<!-- Footer dinámico con más separación -->
+@stop
+
+
 
 @section('footer')
-<!-- Puedes agregar contenido personalizado al pie de página si lo deseas -->
-@endsection
+<div style="text-align: center; margin: 0;"> <!-- Centrado y sin margen -->
+    <h5 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">🌌 Explore the Universe with Us!</h5>
+    <p style="text-align: center;"> <!-- Centrando el texto del párrafo -->
+        🚀 Join our mission to inspire future astronomers and space explorers!
+    </p>
+</div>
+
+
+@stop
 
 @push('css')
-<style>
-    /* Estilos personalizados */
-    .cosmic-container {
-        background: transparent; /* Fondo transparente para el contenedor principal */
-        position: relative; /* Posicionar en relación a otros elementos */
-        z-index: 1; /* Asegurar que el contenido esté sobre el fondo de estrellas */
-    }
+    <style>
+        /* Efecto de fade para las imágenes */
+        #fade-images img {
+            animation: fadeEffect 12s infinite;
+            /* Aumentar el tiempo para un efecto más suave */
+        }
 
-    /* Estilos del fondo */
-    .stars {
-        background: black url('/path/to/stars-image.png') repeat; /* Fondo negro con puntos blancos que simulan estrellas */
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        opacity: 0.9;
-    }
+        @keyframes fadeEffect {
+            0% {
+                opacity: 1;
+            }
 
-    /* Efecto de partículas en el fondo */
-    .particle-background {
-        background-image: url('/path/to/particles-background.png');
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        z-index: -2;
-        opacity: 0.7;
-    }
+            33% {
+                opacity: 0;
+            }
 
-    /* Estilos para las tarjetas */
-    .feature-card {
-        width: 300px;
-        height: 250px;
-        background: rgba(25, 25, 112, 0.7); /* Midnight blue */
-        padding: 20px;
-        border-radius: 15px;
-        transition: transform 0.3s ease, background 0.3s ease;
-        cursor: pointer;
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        text-align: center;
-        margin: 0 auto;
-    }
+            66% {
+                opacity: 1;
+            }
 
-    .feature-card:hover {
-        transform: translateY(-10px);
-        background: rgba(72, 61, 139, 0.8); /* Cambia de color al hacer hover */
-    }
+            100% {
+                opacity: 0;
+            }
+        }
 
-    .feature-icon, .cosmic-text {
-        color: white;
-    }
+        /* Colores del espacio */
+        body {
+            background: linear-gradient(to bottom, #000000, #3f0051);
+            /* Degradado de negro a lila oscuro */
+            margin: 0;
+            /* Eliminando margen predeterminado del body */
+            padding: 0;
+            /* Eliminando padding predeterminado del body */
+        }
 
-    .cosmic-title {
-        color: white;
-        text-shadow: 0 0 10px #fff;
-    }
+        .container-fluid {
+            padding: 0;
+            /* Sin padding en el contenedor */
+            margin: 0;
+            /* Sin margen en el contenedor */
+        }
 
-    /* Añadir margen entre los recuadros */
-    .row.g-4 > .col-md-4 {
-        margin-bottom: 20px;
-    }
+        .bibliography-section {
+    margin-bottom: 0 !important; /* Force the margin-bottom to be zero */
+}
+        .card {
+            background-color: #1e3a5f;
+        }
 
-    /* Asegurar que el contenido también sea transparente para ver el fondo */
-    .cosmic-card {
-        background: rgba(0, 0, 0, 0.5); /* Hacer las tarjetas transparentes */
-    }
-</style>
+        .btn-outline-light {
+            border-color: #1b9aaa;
+            color: #1b9aaa;
+        }
+
+        .btn-outline-light:hover {
+            background-color: #1b9aaa;
+            color: white;
+        }
+
+        .dynamic-text {
+            animation: fadeIn 3s forwards;
+            margin: 0px !important;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .content-wrapper {
+            background-color: #121212;
+            /* Color de fondo oscuro */
+            color: #ffffff;
+            /* Color de texto para que sea legible */
+        }
+
+        .main-footer {
+            background-color: #343a40;
+            /* Color de fondo oscuro */
+            color: #ffffff;
+            /* Color de texto para que sea legible */
+        }
+    </style>
+@endpush
+
+@push('js')
+    <script>
+        // Lógica de imágenes con fade
+        let currentImage = 0;
+        const images = document.querySelectorAll('#fade-images img');
+
+        function changeImage() {
+            images[currentImage].style.opacity = 0; // Desvanecer la imagen actual
+            currentImage = (currentImage + 1) % images.length; // Pasar a la siguiente imagen
+            images[currentImage].style.opacity = 1; // Mostrar la siguiente imagen
+        }
+
+        // Iniciar el cambio de imagen cada 6 segundos
+        setInterval(changeImage, 6000);
+    </script>
 @endpush

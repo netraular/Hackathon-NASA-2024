@@ -4,8 +4,8 @@
 
 @section('content_body')
 
-<!-- Sección de fotos con fade en la parte superior con fondo negro espacial -->
-<div class="container-fluid" style="background-color: #0d1b2a; padding: 20px; text-align: center; position: relative; overflow: hidden; margin: 0;"> <!-- Sin márgenes ni paddings -->
+<!-- Sección de fotos con fade en la parte superior -->
+<div class="container-fluid" style="padding: 20px; text-align: center; position: relative; overflow: hidden; margin: 0;"> <!-- Sin márgenes ni paddings -->
     <div id="fade-images" class="d-flex justify-content-center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0;">
         <img src="{{ asset('images/1.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
         <img src="{{ asset('images/2.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
@@ -44,7 +44,7 @@
                     <h5 style="font-family: 'Poppins', sans-serif; font-weight: bold; text-align: center; color: #ff7e00;">
                         {{ $constellation['name'] }} - Created by: {{ $constellation['user'] }}
                     </h5>
-                    <img src="{{ $constellation['image'] }}" alt="{{ $constellation['name'] }}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px;  background-color: black;">
+                    <img src="{{ $constellation['image'] }}" alt="{{ $constellation['name'] }}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; background-color: black;">
                     <div class="vote-buttons" style="display: flex; justify-content: space-between; align-items: center;">
                         <button class="btn btn-success" onclick="likeConstellation({{ $index + 1 }})" style="font-size: 12px;">
                             👍 Like
@@ -67,8 +67,8 @@
     <h4 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 2.5em; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">
         🪅 About the Project:
     </h4>
-    <p class="dynamic-text pb-3" style="font-size: 1.5em; color: #e0e0e0; line-height: 1.6; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);">
-        🌌 **ExoSky!** is a project that aims to show how the night sky would look from various exoplanets.<br>
+    <p class="dynamic-text pb-3" style="font-size: 1.5em; color: #e0e0e0; line-height: 1.6; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); text-align: left;"> <!-- Cambiado a alineación a la izquierda -->
+        🌌 ExoSky! is a project that aims to show how the night sky would look from various exoplanets.<br>
         🔭 Using real astronomical data, we transform the coordinates of stars as seen from Earth.<br>
         🚀 Our goal is to inspire young minds and spark their interest in space exploration!<br>
         🌠 Explore the universe from new perspectives and feel the excitement of scientific discovery! ✨
@@ -82,7 +82,9 @@
 
 <div style="text-align: center; margin: 0;"> <!-- Centrado y sin margen -->
     <h5 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">🌌 Explore the Universe with Us!</h5>
-    <p>🚀 Join our mission to inspire future astronomers and space explorers!</p>
+    <p style="text-align: justify;"> <!-- Justificado -->
+        🚀 Join our mission to inspire future astronomers and space explorers!
+    </p>
 </div>
 
 @stop
@@ -103,7 +105,7 @@
 
     /* Colores del espacio */
     body {
-        background-color: #0d1b2a;
+        background: linear-gradient(to bottom, #000000, #3f0051); /* Degradado de negro a lila oscuro */
         margin: 0; /* Eliminando margen predeterminado del body */
         padding: 0; /* Eliminando padding predeterminado del body */
     }
@@ -129,7 +131,7 @@
 
     .dynamic-text {
         animation: fadeIn 3s forwards;
-        margin:0px !important;
+        margin: 0px !important;
     }
 
     @keyframes fadeIn {
@@ -167,35 +169,18 @@
 
 @push('js')
 <script>
-    // Ejemplo de función para like y dislike
-    function likeConstellation(id) {
-        alert('You liked Constellation ' + id);
+    // Lógica de imágenes con fade
+    let currentImage = 0;
+    const images = document.querySelectorAll('#fade-images img');
+
+    function changeImage() {
+        images[currentImage].style.opacity = 0; // Desvanecer la imagen actual
+        currentImage = (currentImage + 1) % images.length; // Pasar a la siguiente imagen
+        images[currentImage].style.opacity = 1; // Mostrar la siguiente imagen
     }
 
-    function dislikeConstellation(id) {
-        alert('You disliked Constellation ' + id);
-    }
-
-    function viewConstellation(id) {
-        alert('Viewing details of Constellation ' + id);
-        // Aquí puedes redirigir o mostrar un modal con la constelación
-    }
-
-    $(document).ready(function() {
-        let currentIndex = 0;
-        const images = $('#fade-images img');
-        const imageCount = images.length;
-
-        // Función para hacer el fade entre imágenes
-        function fadeImages() {
-            images.eq(currentIndex).css('opacity', '0');
-            currentIndex = (currentIndex + 1) % imageCount;
-            images.eq(currentIndex).css('opacity', '1');
-        }
-
-        // Iniciar el efecto de fade
-        fadeImages();
-        setInterval(fadeImages, 3000); // Cambiar cada 3 segundos
-    });
+    // Iniciar el cambio de imagen cada 6 segundos
+    setInterval(changeImage, 6000);
 </script>
 @endpush
+

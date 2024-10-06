@@ -5,13 +5,11 @@
 @section('subtitle', 'Star Field')
 
 @section('content_body')
-
-
     @include("skyview.{$view}")
 
-    @if(isset($errorMessage))
+    @if(session('errorMessage'))
         <script>
-            alert("{{ $errorMessage }}");
+            alert("{{ session('errorMessage') }}");
         </script>
     @endif
 @stop
