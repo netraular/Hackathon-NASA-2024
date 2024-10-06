@@ -17,9 +17,6 @@ Route::get('/exploreV1', function () {
 Route::get('/exploreV2', function () {
     return view('skyview.exoskyV2');
 });
-Route::get('/exploreV3', function () {
-    return view('skyview.layout');
-});
 Route::get('/info-resources', function () {
     return view('info-resources');
 });

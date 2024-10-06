@@ -5,14 +5,14 @@
 @section('content_body')
 
 <!-- Sección de fotos con fade en la parte superior con fondo negro espacial -->
-<div class="container-fluid" style="background-color: #0d1b2a; padding: 20px; text-align: center;">
+<div class="container-fluid" style="background-color: #0d1b2a; padding: 20px; text-align: center; margin: 0; padding: 0;"> <!-- Sin márgenes ni paddings -->
     <h4 class="text-center" style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 3em; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
         ✨ Stunning Views of Skies from Other Worlds:
     </h4>
-    <div id="fade-images" style="position: relative; width: 80%; margin: 0 auto; height: 300px;">
-        <img src="image1.jpg" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
-        <img src="image2.jpg" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
-        <img src="image3.jpg" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+    <div id="fade-images" class="d-flex justify-content-center" style="position: relative; width: 80%; height: 300px; margin: 0 auto;">
+        <img src="image1.png" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+        <img src="image2.png" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+        <img src="image3.png" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
     </div>
 </div>
 
@@ -25,15 +25,15 @@
 </h2>
 
 <!-- Contenido: Últimas constelaciones en horizontal -->
-<div class="container">
+<div class="container-fluid" style="padding: 0; margin: 0;"> <!-- Sin márgenes ni paddings -->
     <h4 style="color: #00d4ff; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 2.5em; text-align: center; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">🌠 Latest Constellations:</h4>
     <div class="row justify-content-center">
         @php
             $constellations = [
                 ['name' => 'Traveling Star', 'user' => 'Galaxy01', 'image' => asset('images/constellation1.png')],
-                ['name' => 'Night Hunter', 'user' => 'AstroHunter', 'image' => asset('storage/app/public/constellation2.jpg')],
-                ['name' => 'Mystical Nebula', 'user' => 'SpaceDreamer', 'image' => asset('storage/app/public/constellation3.jpg')],
-                ['name' => 'Wings of Pegasus', 'user' => 'CosmicFlyer', 'image' => asset('storage/app/public/constellation4.jpg')]
+                ['name' => 'Night Hunter', 'user' => 'AstroHunter', 'image' => asset('images/constellation2.png')],
+                ['name' => 'Mystical Nebula', 'user' => 'SpaceDreamer', 'image' => asset('images/constellation3.png')],
+                ['name' => 'Wings of Pegasus', 'user' => 'CosmicFlyer', 'image' => asset('images/constellation4.png')]
             ];
         @endphp
 
@@ -62,11 +62,11 @@
 </div>
 
 <!-- Texto dinámico y atractivo del proyecto debajo -->
-<div class="container text-center mt-5 mb-5">
+<div class="container text-center mt-5 mb-5" style="padding: 0;"> <!-- Sin paddings -->
     <h4 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 2.5em; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">
         🪅 About the Project:
     </h4>
-    <p class="dynamic-text" style="font-size: 1.3em; color: #e0e0e0; line-height: 1.6;">
+    <p class="dynamic-text" style="font-size: 1.5em; color: #e0e0e0; line-height: 1.6; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);">
         🌌 **ExoSky!** is a project that aims to show how the night sky would look from various exoplanets.<br>
         🔭 Using real astronomical data, we transform the coordinates of stars as seen from Earth.<br>
         🚀 Our goal is to inspire young minds and spark their interest in space exploration!<br>
@@ -75,119 +75,126 @@
 </div>
 
 <!-- Footer dinámico con más separación -->
-<footer class="bg-dark text-white text-center mt-5" style="position: relative; bottom: 0; width: 100%; padding: 30px;">
-    <h5 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">🌌 Explore the Universe with Us!</h5>
-    <p>🚀 Join our mission to inspire future astronomers and space explorers!</p>
-</footer>
-
 @stop
 
 @section('footer')
+
+<div style="text-align: center; margin: 0;"> <!-- Centrado y sin margen -->
+    <h5 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">🌌 Explore the Universe with Us!</h5>
+    <p>🚀 Join our mission to inspire future astronomers and space explorers!</p>
+</div>
+
 @stop
 
 @push('css')
-    <style>
-        /* Efecto de fade para las imágenes */
-        #fade-images img {
-            animation: fadeEffect 9s infinite;
-        }
+<style>
+    /* Efecto de fade para las imágenes */
+    #fade-images img {
+        animation: fadeEffect 9s infinite;
+    }
 
-        @keyframes fadeEffect {
-            0% { opacity: 1; }
-            33% { opacity: 0; }
-            66% { opacity: 1; }
-            100% { opacity: 0; }
-        }
+    @keyframes fadeEffect {
+        0% { opacity: 1; }
+        33% { opacity: 0; }
+        66% { opacity: 1; }
+        100% { opacity: 0; }
+    }
 
-        /* Colores del espacio */
-        body {
-            background-color: #0d1b2a;
-        }
+    /* Colores del espacio */
+    body {
+        background-color: #0d1b2a;
+        margin: 0; /* Eliminando margen predeterminado del body */
+        padding: 0; /* Eliminando padding predeterminado del body */
+    }
 
-        .card {
-            background-color: #1e3a5f;
-        }
+    .container-fluid {
+        padding: 0; /* Sin padding en el contenedor */
+        margin: 0; /* Sin margen en el contenedor */
+    }
 
-        .btn-outline-light {
-            border-color: #1b9aaa;
-            color: #1b9aaa;
-        }
+    .card {
+        background-color: #1e3a5f;
+    }
 
-        .btn-outline-light:hover {
-            background-color: #1b9aaa;
-            color: white;
-        }
+    .btn-outline-light {
+        border-color: #1b9aaa;
+        color: #1b9aaa;
+    }
 
-        .dynamic-text {
-            animation: fadeIn 3s forwards;
-        }
+    .btn-outline-light:hover {
+        background-color: #1b9aaa;
+        color: white;
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .dynamic-text {
+        animation: fadeIn 3s forwards;
+    }
 
-        footer {
-            position: relative;
-            bottom: 0;
-            width: 100%;
-            padding: 20px;
-            background-color: #000;
-            color: white;
-            animation: slideIn 0.5s forwards;
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
         }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
-        @keyframes slideIn {
-            from {
-                transform: translateY(100%);
-                opacity: 0;
-            }
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
+    @keyframes slideIn {
+        from {
+            transform: translateY(100%);
+            opacity: 0;
         }
-    </style>
+        to {
+            transform: translateY(0);
+            opacity: 1;
+        }
+    }
+
+    .content-wrapper {
+        background-color: #121212; /* Color de fondo oscuro */
+        color: #ffffff; /* Color de texto para que sea legible */
+    }
+    .main-footer {
+        background-color: #343a40; /* Color de fondo oscuro */
+        color: #ffffff; /* Color de texto para que sea legible */
+    }
+</style>
 @endpush
 
 @push('js')
-    <script>
-        // Ejemplo de función para like y dislike
-        function likeConstellation(id) {
-            alert('You liked Constellation ' + id);
-            // Aquí puedes añadir lógica para hacer la solicitud a tu servidor
+<script>
+    // Ejemplo de función para like y dislike
+    function likeConstellation(id) {
+        alert('You liked Constellation ' + id);
+    }
+
+    function dislikeConstellation(id) {
+        alert('You disliked Constellation ' + id);
+    }
+
+    function viewConstellation(id) {
+        alert('Viewing details of Constellation ' + id);
+        // Aquí puedes redirigir o mostrar un modal con la constelación
+    }
+
+    $(document).ready(function() {
+        let currentIndex = 0;
+        const images = $('#fade-images img');
+        const imageCount = images.length;
+
+        // Función para hacer el fade entre imágenes
+        function fadeImages() {
+            images.eq(currentIndex).css('opacity', '0');
+            currentIndex = (currentIndex + 1) % imageCount;
+            images.eq(currentIndex).css('opacity', '1');
         }
 
-        function dislikeConstellation(id) {
-            alert('You disliked Constellation ' + id);
-            // Aquí puedes añadir lógica para hacer la solicitud a tu servidor
-        }
-
-        function viewConstellation(id) {
-            alert('Viewing details of Constellation ' + id);
-            // Aquí puedes redirigir o mostrar un modal con la constelación
-        }
-
-        $(document).ready(function() {
-            let currentIndex = 0;
-            const images = $('#fade-images img');
-            const imageCount = images.length;
-
-            // Función para hacer el fade entre imágenes
-            function fadeImages() {
-                images.eq(currentIndex).css('opacity', '0');
-                currentIndex = (currentIndex + 1) % imageCount;
-                images.eq(currentIndex).css('opacity', '1');
-            }
-
-            // Hacer que cambien las imágenes cada 3 segundos
-            setInterval(fadeImages, 3000);
-        });
-    </script>
+        // Iniciar el efecto de fade
+        fadeImages();
+        setInterval(fadeImages, 3000); // Cambiar cada 3 segundos
+    });
+</script>
 @endpush
+

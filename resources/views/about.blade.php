@@ -16,9 +16,21 @@ This project, part of the NASA 2024 Hackathon, is about imagining what the night
 @stop
 
 @section('footer')
+<a>hola</a>
 @stop
 
 @push('css')
+<style>
+    /* public/css/app.css */
+.content-wrapper {
+    background-color: #121212; /* Color de fondo oscuro */
+    color: #ffffff; /* Color de texto para que sea legible */
+}
+.main-footer {
+    background-color: #343a40; /* Color de fondo oscuro */
+    color: #ffffff; /* Color de texto para que sea legible */
+}
+</style>
 @endpush
 
 @push('js')
