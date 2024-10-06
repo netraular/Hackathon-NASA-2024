@@ -61,7 +61,7 @@
         // Color más oscuro en el centro y transición más sutil a los bordes
         gradient.addColorStop(0, 'rgba(0, 0, 0, 1)');  // Centro oscuro
         gradient.addColorStop(0.5, 'rgba(0, 0, 20, 0.8)');  // Transición a un azul muy oscuro
-        gradient.addColorStop(1, 'rgba(0, 0, 40, 0.5)');  // Azul más oscuro en el borde
+        gradient.addColorStop(1, 'rgba(0, 0, 30, 0.5)');  // Azul más oscuro en el borde
 
         // Aplicar el gradiente al fondo
         gradientContext.fillStyle = gradient;
@@ -84,7 +84,8 @@
                     let starMaterial = new THREE.MeshBasicMaterial({ color: color });
                     let star = new THREE.Mesh(starGeometry, starMaterial); // Variable única para cada estrella
                     star.position.set({{ $star['x'] }}, {{ $star['y'] }}, {{ $star['z'] }});
-                    star.userData = { opacityDirection: 1, opacitySpeed: Math.random() * 0.05 + 0.01 };
+                    star.userData = { opacityDirection: 1, opacitySpeed: Math.random() * 0.05 + 0.01 ,name: "{{ $star['name'] }}" // Agregar el nombre de la estrella
+                };
                     scene.add(star);
                     stars.push(star);
                 }
@@ -138,7 +139,47 @@
         // Función para generar un poema corto
         function generatePoem() {
             const poems = [
-                // Lista de poemas...
+                
+"In the night sky, a star takes flight,\nA tiny flicker, a beacon of light,\nIn the vast expanse, its glow sincere,\nA guide through darkness, ever near.",
+
+"High above, the star ascends,\nIts light a promise, a hope that mends,\nIn the quiet night, it softly bends,\nA dream that never truly ends.",
+
+"Upon the heavens, the stars do rise,\nTheir glimmer reflecting in weary eyes,\nIn the silent night, no need for disguise,\nA journey unfolds beneath the skies.",
+
+"In the darkest hours, a star will stay,\nIts light a whisper that leads the way,\nIn the endless night, its beams convey,\nA truth unspoken, come what may.",
+
+"Amid the stars, a story is told,\nOf dreams untouched, of hearts so bold,\nIn the vastness, their secrets unfold,\nA promise of warmth in the night's cold.",
+
+"Through the quiet sky, a star will call,\nIts light a thread connecting all,\nIn the distance, its shadows fall,\nA sign of hope, however small.",
+
+"A star's soft gleam in the midnight air,\nIts light a balm for each despair,\nIn the endless sky, it shines so fair,\nA spark of joy we long to share.",
+
+"In the boundless sky, a star takes hold,\nIts silver fire, its heart of gold,\nIn the vast unknown, a tale is told,\nA dream of peace that won't grow old.",
+
+"The star's light shines in the silent night,\nA steadfast glow, a gentle might,\nIn the endless dark, its hope takes flight,\nA distant dream that feels so right.",
+
+"Above the world, a star does gleam,\nIts glow a wish, a brightened stream,\nIn the quiet dark, it casts a beam,\nA flicker of hope, a cherished dream.",
+
+"Beyond the clouds, the stars appear,\nTheir light a comfort, always near,\nIn the deepest night, they have no fear,\nA silent guide through every tear.",
+
+"In the velvet sky, the stars reside,\nTheir brilliance bright, their light a guide,\nIn the silent dark, they never hide,\nA path to hope, a dream beside.",
+
+"Under the moon, the stars ignite,\nTheir silver beams, a tranquil sight,\nIn the darkest hours, they bring the light,\nA promise of dawn, soft and bright.",
+
+"The stars above, in quiet grace,\nTheir glow a memory time can’t erase,\nIn the endless sky, they leave no trace,\nYet in our hearts, they find a place.",
+
+"In the stillness, a star does burn,\nIts light a beacon, a soul's return,\nIn the endless night, we look and yearn,\nA dream to hold, a wish to learn.",
+
+"Among the stars, a story waits,\nA whispered hope beyond the gates,\nIn the dark, their beauty creates,\nA dream of peace that never abates.",
+
+"The stars aloft, so pure and bright,\nTheir glow a lantern in the night,\nIn the darkest sky, they give us sight,\nA song of dreams, taking flight.",
+
+"Through the vastness, the stars remain,\nA gentle light in night's domain,\nIn the quiet dark, they ease the pain,\nA hope reborn through joy and strain.",
+
+"Between the stars, a truth is found,\nA light that knows no earthly bound,\nIn the endless night, they sing around,\nA melody pure, a sacred sound.",
+
+"In the starry sky, a light will glow,\nIts gentle warmth, a steady flow,\nIn the endless night, it lets us know,\nThat hope endures, wherever we go."
+
             ];
             return poems[Math.floor(Math.random() * poems.length)];
         }
@@ -161,7 +202,9 @@
                 const star = intersects[0].object;
                 const { x, y, z } = star.position;
                 const poem = generatePoem();
+                const starName = star.userData.name; // Obtener el nombre de la estrella
                 popupContent.innerHTML = `
+                    <p>Star Name: ${starName}</p>
                     <p>Star coordinates:</p>
                     <p>X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, Z: ${z.toFixed(2)}</p>
                     <p>${poem}</p>
