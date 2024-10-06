@@ -30,38 +30,48 @@ class SkyViewController extends Controller
         }
         foreach ($csvFile as $line)
         {
-            if ($i == -1)
+            if ($i / 2000 != $id - 1 && $i / 2000 != $id)
             {
+                // dd("AAAAAAAAAAAA");
                 $i++;
                 continue;
             }
-            else if ($i % 2000)
+            else if ($i / 2000 == $id)
             {
-                if ($i > 100)
-                {
-                    $data = [
-                        'id' => $id,
-                        'name' => $datas[1], // Puedes personalizar esto según tus necesidades
-                        'star_name' => $datas[0],
-                        'stars' => $starData,
-                    ];
-                    dump($i / 2000);
-                    if ($i / 2000 == $id + 1)
-                        break ;
-                }
-                $datas = str_getcsv($line);
-                $starData = [];
+                dd("BBBBBBBBBB");
+                break ;
             }
-            else
+            else if ($i / 2000 == $id - 1)
             {
-                array_push($starData, $line);
+                dd($i);
             }
-            $i++;
+            // else if ($i % 2000)
+            // {
+            //     if ($i > 100)
+            //     {
+            //         $data = [
+            //             'id' => $id,
+            //             'name' => $datas[1], // Puedes personalizar esto según tus necesidades
+            //             'star_name' => $datas[0],
+            //             'stars' => $starData,
+            //         ];
+            //         dump($i / 2000);
+            //         if ($i / 2000 == $id + 1)
+            //             break ;
+            //     }
+            //     $datas = str_getcsv($line);
+            //     $starData = [];
+            // }
+            // else
+            // {
+            //     array_push($starData, $line);
+            // }
+            // $i++;
         }
         $data = [
             'id' => $id,
-            'name' => $datas[1], // Puedes personalizar esto según tus necesidades
-            'star_name' => $datas[0],
+            'name' => '1', // Puedes personalizar esto según tus necesidades
+            'star_name' => '2',
             'stars' => $starData,
         ];
 

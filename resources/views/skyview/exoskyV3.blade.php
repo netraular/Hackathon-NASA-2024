@@ -7,6 +7,9 @@
     </div>
     <div id="star-info" style="position: absolute; color: white; font-family: Arial, sans-serif; z-index: 1;"></div>
     <div id="angle-display" style="position: absolute; top: 30px; right: 270px; color: white; z-index: 1;">Ángulo: 0°</div>
+    <div id="popup-menu" style="position: absolute; top: 10px; right: 10px; width: 250px; background-color: rgba(0, 0, 0, 0.8); color: white; padding: 10px; border-radius: 5px; display: none;">
+        <div id="popup-content"></div>
+    </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -60,7 +63,7 @@
         controls.dampingFactor = 0.05;
         controls.enableZoom = false;            // Desactivar zoom
         controls.enableRotate = true;           // Permitir rotar
-        controls.maxPolarAngle = Math.PI ;   // Limitar rotación hacia arriba a 180 grados
+        controls.maxPolarAngle = Math.PI / 2;   // Limitar rotación hacia arriba a 90 grados
         controls.minPolarAngle = -Math.PI;      // Limitar rotación hacia abajo a -180 grados
         controls.screenSpacePanning = false;    // Deshabilita el panning
         controls.target.set(0, 0, 0);           // La cámara mira hacia el centro (0, 0, 0)
@@ -76,6 +79,16 @@
         const raycaster = new THREE.Raycaster();
         const mouse = new THREE.Vector2();
 
+        // Función para generar un poema corto
+        function generatePoem() {
+            const poems = [
+                "En el cielo nocturno, una estrella brilla,\nSu luz débil, pero su corazón ardiente,\nEn la vasta oscuridad, su esencia se revela,\nUna promesa de esperanza, un sueño que no se apaga.",
+                "Como un diamante en la noche oscura,\nLa estrella alza su brillo, su luz pura,\nEn el vasto cielo, su voz se eleva,\nUn canto de esperanza, un sueño que no se desvanece.",
+                "En la quietud del cielo, la estrella se posa,\nSu luz suave, su brillo que no se apaga,\nEn la vasta oscuridad, su esencia se revela,\nUna promesa de luz, un sueño que no se desvanece."
+            ];
+            return poems[Math.floor(Math.random() * poems.length)];
+        }
+
         window.addEventListener('click', function(event) {
             const rect = container.getBoundingClientRect();
             const offsetX = event.clientX - rect.left;
@@ -87,15 +100,21 @@
             raycaster.setFromCamera(mouse, camera);
             const intersects = raycaster.intersectObjects(stars);
 
-            const starInfo = document.getElementById('star-info');
+            const popupMenu = document.getElementById('popup-menu');
+            const popupContent = document.getElementById('popup-content');
+
             if (intersects.length > 0) {
                 const star = intersects[0].object;
                 const { x, y, z } = star.position;
-                starInfo.innerText = `Coordenadas de la estrella: X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, Z: ${z.toFixed(2)}`;
-                starInfo.style.left = event.clientX + 'px';
-                starInfo.style.top = event.clientY + 'px';
-                starInfo.style.display = 'block';
-                setTimeout(() => { starInfo.style.display = 'none'; }, 3000);  // Ocultar después de 3 segundos
+                const poem = generatePoem();
+                popupContent.innerHTML = `
+                    <p>Coordenadas de la estrella:</p>
+                    <p>X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, Z: ${z.toFixed(2)}</p>
+                    <p>${poem}</p>
+                `;
+                popupMenu.style.display = 'block';
+            } else {
+                popupMenu.style.display = 'none';
             }
         });
 
