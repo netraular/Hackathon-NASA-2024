@@ -39,7 +39,7 @@
                 <h3 class="card-title cosmic-text display-4" style="font-size: 2.5rem; margin-top: 20px;">Operation Tutorial 📖</h3> <!-- Título más grande con más margen superior -->
                 <div class="card-body cosmic-interactive-card"> <!-- Tarjeta interactiva -->
                     <p class="card-text cosmic-text" style="font-size: 1.5rem;">Learn how to navigate our website and make the most of its features.</p>
-                    <a href="#" class="btn btn-primary btn-lg" style="padding: 12px 24px; font-size: 1.2rem;">View Tutorial</a> <!-- Botón más grande y relleno en azul -->
+                    <a href="https://youtu.be/vZP7UXet8Ko" class="btn btn-primary btn-lg" style="padding: 12px 24px; font-size: 1.2rem;">View Tutorial</a> <!-- Botón más grande y relleno en azul -->
                 </div>
             </div>
         </div>

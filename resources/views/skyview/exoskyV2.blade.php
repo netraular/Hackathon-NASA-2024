@@ -275,7 +275,7 @@
         </div>
         <strong>
             <a href="{{ config('app.company_url', '#') }}">
-                Button :) Aquí debería haber opciones
+                
             </a>
         </strong>
     </div>
