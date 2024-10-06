@@ -12,13 +12,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/exploreV1', function () {
-    return view('exoskyV1');
+    return view('skyview.exoskyV1');
 });
 Route::get('/exploreV2', function () {
-    return view('exoskyV2');
+    return view('skyview.exoskyV2');
 });
 Route::get('/exploreV3', function () {
-    return view('exoskyV3');
+    return view('skyview.layout');
 });
 Route::get('/info-resources', function () {
     return view('info-resources');

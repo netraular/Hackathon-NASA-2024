@@ -5,13 +5,15 @@
 @section('content_body')
     <div class="card">
         <div class="card-header">
-            <h3 class="card-title">Subir archivo CSV de Coordenadas de Estrellas</h3>
+            <h3 class="card-title">Upload CSV of Star Coordinates 🌟</h3> <br>
+            <p>Choose a CSV file to upload with star coordinates and click below to process it!</p>
         </div>
         <div class="card-body">
             <form action="{{ route('csv.process') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="csv_file">Selecciona un archivo CSV</label>
+                    <label for="csv_file">Select a CSV file</label>
+                    <p>Click Process CSV to see the magic happen! ✨</p>
                     <input type="file" class="form-control-file" id="csv_file" name="csv_file">
                 </div>
                 <button type="submit" class="btn btn-primary">Procesar CSV</button>
