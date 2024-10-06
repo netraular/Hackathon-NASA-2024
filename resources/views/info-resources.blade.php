@@ -1,8 +1,10 @@
 @extends('layouts.app')
+
 <!-- Incluye Particles.js CDN -->
 <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+
 <!-- Incluye Font Awesome CDN en la sección <head> de tu layout principal -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrQkTyqL6W76f+2fJH+u5oJ+jB/ocEw7h4/YbQjCe1PPkRYbJ0vKlJmB8cF1kSga28iM6h5g1D59G+gKzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZkTyqL6W76f+2fJH+u5oJ+jB/ocEw7h4/YbQjCe1PPkRYbJ0vKlJmB8cF1kSga28iM6h5g1D59G+gKzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 @section('subtitle', 'Welcome Page')
 
@@ -125,8 +127,8 @@
         --space-bg: #0a1e3f; /* Azul muy oscuro para el fondo */
         --space-primary: #1c3d5a; /* Azul oscuro */
         --space-secondary: #2a6cb7; /* Azul medio */
-        --space-accent: #1c3d5a; /* Azul oscuro para el texto */
-        --card-bg: #ffffff; /* Fondo blanco para las tarjetas */
+        --space-accent: #ffffff; /* Blanco para el texto */
+        --card-bg: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente para las tarjetas */
         --text-dark-blue: #1c3d5a; /* Texto azul oscuro */
         --space-divider: #2a6cb7; /* Azul medio para divisores */
     }
@@ -168,14 +170,14 @@
     .dynamic-title h1 {
         font-size: 4rem;
         font-weight: 800;
-        color: #ffffff;
+        color: var(--space-accent);
         text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
         transition: opacity 1s ease-out, transform 1s ease-out;
     }
 
     .dynamic-title p {
         font-size: 1.5rem;
-        color: #ffffff;
+        color: var(--space-accent);
     }
 
     .text-section {
@@ -193,20 +195,21 @@
         background-color: var(--card-bg);
         border: none;
         border-radius: 15px;
+        backdrop-filter: blur(10px); /* Efecto de desenfoque para las tarjetas */
         transition: opacity 1s ease-out, transform 1s ease-out;
     }
 
     .content-card .card-body {
-        color: var(--text-dark-blue);
+        color: var(--space-accent);
     }
 
     .content-card .card-title {
-        color: var(--text-dark-blue);
+        color: var(--space-accent);
         font-weight: 700;
     }
 
     .content-card .card-text {
-        color: var(--text-dark-blue);
+        color: var(--space-accent);
     }
 
     .content-card:hover {
@@ -245,7 +248,7 @@
 
     .space-accordion .accordion-button {
         background-color: var(--card-bg);
-        color: var(--text-dark-blue);
+        color: var(--space-accent);
         font-weight: 600;
         border-radius: 10px;
         padding: 1rem;
@@ -259,7 +262,7 @@
 
     .space-accordion .accordion-body {
         background-color: var(--card-bg);
-        color: var(--text-dark-blue);
+        color: var(--space-accent);
         border-radius: 0 0 10px 10px;
         padding: 1rem;
     }
@@ -393,10 +396,7 @@
         },
         "retina_detect": true
     });
-</script>
 
-<!-- Scripts para Animaciones al Desplazarse -->
-<script>
     document.addEventListener('DOMContentLoaded', () => {
         // Animación del Título Dinámico
         const title = document.querySelector('.dynamic-title');

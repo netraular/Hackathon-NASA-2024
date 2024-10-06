@@ -43,18 +43,20 @@
             <div class="row">
                 @php
                     $constellations = [
-                        ['name' => 'Traveling Star', 'user' => 'Galaxy01'],
-                        ['name' => 'Night Hunter', 'user' => 'AstroHunter'],
-                        ['name' => 'Mystical Nebula', 'user' => 'SpaceDreamer'],
-                        ['name' => 'Wings of Pegasus', 'user' => 'CosmicFlyer']
+                        ['name' => 'Traveling Star', 'user' => 'Galaxy01', 'image' => asset('storage/app/public/constellation1.PNG')],
+                        ['name' => 'Night Hunter', 'user' => 'AstroHunter', 'image' => asset('storage/app/public/constellation2.png')],
+                        ['name' => 'Mystical Nebula', 'user' => 'SpaceDreamer', 'image' => asset('storage/app/public/constellation3.png')],
+                        ['name' => 'Wings of Pegasus', 'user' => 'CosmicFlyer', 'image' => asset('storage/app/public/constellation4.png')]
                     ];
                 @endphp
 
                 @foreach ($constellations as $index => $constellation)
                     <div class="col-6 mb-3">
                         <div class="card" style="background-color: #243b55; color: white; border: 1px solid #1b9aaa; padding: 10px; border-radius: 8px;">
-                            <h5 style="font-family: 'Montserrat', sans-serif; font-weight: bold; text-align: center; color: #00d4ff;">{{ $constellation['name'] }} - Created by: {{ $constellation['user'] }}</h5>
-                            <img src="constellation{{ $index + 1 }}.jpg" alt="Constellation {{ $index + 1 }}" style="width: 100%; height: 100px; object-fit: cover; border-radius: 8px; margin-bottom: 10px;">
+                            <h5 style="font-family: 'Montserrat', sans-serif; font-weight: bold; text-align: center; color: #00d4ff;">
+                                {{ $constellation['name'] }} - Created by: {{ $constellation['user'] }}
+                            </h5>
+                            <img src="{{ $constellation['image'] }}" alt="{{ $constellation['name'] }}" style="width: 100%; height: 150px; object-fit: cover; border-radius: 8px; margin-bottom: 10px; background-color: black;">
                             <div class="vote-buttons" style="display: flex; justify-content: space-between; align-items: center;">
                                 <button class="btn btn-success" onclick="likeConstellation({{ $index + 1 }})" style="font-size: 12px;">
                                     👍 Like

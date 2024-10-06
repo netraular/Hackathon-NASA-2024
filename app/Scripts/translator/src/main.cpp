@@ -14,7 +14,7 @@ int main() {
 
     try {
         std::ifstream reader(CSVFile.c_str());\
-        std::ifstream writer(CSVFile2.c_str());
+        std::ofstream writer(CSVFile2.c_str());
         if (!reader.is_open()) {
             throw std::runtime_error("Could not open the file.");
         }
@@ -59,11 +59,20 @@ int main() {
 
         for (; begin != end; begin++)
         {
-            // std::cout << begin->GetNameFirstStar() << std::endl;
             begin->ProjectBodyOverExoplanet();
+            writer << begin->GetStarName() << "," << begin->GetName() << "," << begin->getRA() << "," << begin->getDEC() << ",0," << begin->getDistance() << ",None" << "\n";
+            std::vector<Star>   stars = begin->getStars();
+            std::vector<Star>::iterator    begin2 = stars.begin();
+            std::vector<Star>::iterator    end2 = stars.end();
+            for (; begin2 != end2; begin2++)
+            {
+                writer << begin2->GetName() << ",None," << begin2->getRA() << "," << begin2->getDEC() << ",0," << begin2->getDistance() << ",None" << "\n";
+            }
         }
 
         reader.close();
+        writer.close();
+        
     } catch (const std::exception& ex) {
         std::cout << "Error: " << ex.what() << std::endl;
     }

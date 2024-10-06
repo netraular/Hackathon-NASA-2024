@@ -14,7 +14,7 @@ return [
     |
     */
 
-    'title' => 'AdminLTE 3',
+    'title' => 'EXOSKY!',
     'title_prefix' => '',
     'title_postfix' => '',
 
@@ -292,7 +292,7 @@ return [
     |
     */
 
-   'menu' => [
+'menu' => [
     // Navbar items:
     [
         'type' => 'navbar-search',
@@ -341,9 +341,9 @@ return [
                 'icon' => 'fas fa-fw fa-star',
             ],
             [
-                'text' => 'PlanetMenu',
-                'url' => 'exploreV3',
-                'icon' => 'fas fa-fw fa-star',
+                'text' => 'Planet menu',
+                'url' => 'skyview/exoplanets', // Modificado para apuntar a /skyview/exoplanets
+                'icon' => 'fas fa-fw fa-globe',
             ],
         ],
     ],
