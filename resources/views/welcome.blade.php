@@ -10,9 +10,10 @@
         ✨ Stunning Views of Skies from Other Worlds:
     </h4>
     <div id="fade-images" class="d-flex justify-content-center" style="position: relative; width: 80%; height: 300px; margin: 0 auto;">
-        <img src="image1.png" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
-        <img src="image2.png" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
-        <img src="image3.png" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+        <img src="{{ asset('images/1.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+        <img src="{{ asset('images/2.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+        <img src="{{ asset('images/3.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
+        <img src="{{ asset('images/4.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
     </div>
 </div>
 
@@ -90,7 +91,7 @@
 <style>
     /* Efecto de fade para las imágenes */
     #fade-images img {
-        animation: fadeEffect 9s infinite;
+        animation: fadeEffect 12s infinite; /* Aumentar el tiempo para un efecto más suave */
     }
 
     @keyframes fadeEffect {

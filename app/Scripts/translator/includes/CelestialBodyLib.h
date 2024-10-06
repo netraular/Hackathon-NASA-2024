@@ -68,7 +68,7 @@ public:
         for (; begin != end; begin++)
         {
             begin->SetData(this->exoplanetData.SphericalTransData(begin->GetData()));
-            begin->realDistance(this->exoplanetData.getDistance());
+            // begin->realDistance(this->exoplanetData.getDistance());
         }
     }
 

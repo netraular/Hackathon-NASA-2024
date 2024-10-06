@@ -12,11 +12,11 @@ public:
 
     Data SphericalTransData(const Data& ref_data) const {
         double ref_distance = ref_data.getDistance();
-        double ref_DEC = ref_data.getDEC() * (M_PI / 180);
-        double ref_RA = ref_data.getRA() * (M_PI / 180);
+        double ref_DEC = ref_data.getDEC() * (M_PI / 180.0);
+        double ref_RA = ref_data.getRA() * (M_PI / 180.0);
 
-        double RAp = RA * (M_PI / 180);
-        double DECp = DEC * (M_PI / 180);
+        double RAp = RA * (M_PI / 180.0);
+        double DECp = DEC * (M_PI / 180.0);
         double DISTp = distance;
 
         double theta = M_PI / 2 - DECp;
@@ -29,7 +29,15 @@ public:
         double ys2 = -sin(RAp) * xs + cos(RAp) * ys;
         double zs2 = sin(theta) * cos(RAp) * xs + sin(theta) * sin(RAp) * ys + cos(theta) * zs;
 
-        return Data(sqrt(pow(xs2, 2) + pow(ys2, 2) + pow(zs2, 2)), asin(zs2 / sqrt(pow(xs2, 2) + pow(ys2, 2) + pow(zs2, 2))), atan2(ys2, xs2));
+        std::cout << ref_distance <<" , " << ref_DEC << " , " << ref_RA << " +++ ";
+        std::cout << DISTp <<" , " << DECp << " , " << RAp << " +++ ";
+        std::cout << xs <<" , " << ys << " , " << zs << " +++ ";
+        std::cout << xs2 <<" , " << ys2 << " , " << zs2 << " +++ ";
+        double final_dist= sqrt(pow(xs2, 2) + pow(ys2, 2) + pow(zs2, 2));
+        double final_ra = asin(zs2 / sqrt(pow(xs2, 2) + pow(ys2, 2) + pow(zs2, 2)));
+        double final_dec = atan2(ys2, xs2);
+        std::cout << "Dist=" << final_dist << ", RA=" << final_ra << ", DEC=" << final_dec << std::endl;
+        return Data(final_dist, final_ra, final_dec);
     }
 
     double ExoPlanetToStarDistance(double DistExo) const {

@@ -337,7 +337,7 @@ return [
             ],
             [
                 'text' => 'V3',
-                'url' => 'skyview/exploreV3',
+                'url' => 'skyview/exoskyV3',
                 'icon' => 'fas fa-fw fa-star',
             ],
             [

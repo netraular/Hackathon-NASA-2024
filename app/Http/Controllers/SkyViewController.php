@@ -8,14 +8,16 @@ class SkyViewController extends Controller
 {
     public function index($view = 'exoplanets')
     {
-        // Verifica si la vista existe
-        if (!view()->exists("skyview.{$view}")) {
+        $exoplanets = ['exoskyV3'];
+    
+        // Verifica si la vista está en la lista de exoplanetas o es 'exoplanets'
+        if (!in_array($view, $exoplanets) && $view !== 'exoplanets') {
             $view = 'exoplanets';
             $errorMessage = 'The selected planet does not exist.';
         } else {
             $errorMessage = null;
         }
-
+    
         return view('skyview.layout', ['view' => $view, 'errorMessage' => $errorMessage]);
     }
 }

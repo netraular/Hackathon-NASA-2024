@@ -3,7 +3,7 @@
 @section('subtitle', 'Welcome Page')
 
 @section('content_body')
-<div class="container-fluid my-5 text-center position-relative">
+<div class="container-fluid my-5 text-center position-relative cosmic-container">
     <!-- Main Title -->
     <div class="mb-5">
         <h1 class="display-4 fw-bold cosmic-title">Welcome to ChatGPT for Exoplanet Information 🌌</h1>
@@ -40,43 +40,43 @@
         <div class="row g-4 justify-content-center">
             <!-- Feature 1: Mapa Interactivo -->
             <div class="col-md-4">
-                <div class="feature-card">
-                    <i class="fas fa-map-marked-alt fa-3x mb-3"></i>
-                    <h4 class="cosmic-text">Mapa Interactivo del Cielo Nocturno</h4>
-                    <p class="cosmic-text">Explora el cielo nocturno de los diferentes exoplanetas en nuestra base de datos con un mapa interactivo.</p>
-                </div>
+                <a href="https://nasa24.netshiba.com/exploreV1">
+                    <div class="feature-card">
+                        <i class="fas fa-map-marked-alt fa-3x mb-3 feature-icon"></i>
+                        <h4 class="cosmic-text">Mapa Interactivo del Cielo Nocturno</h4>
+                        <p class="cosmic-text">Explora el cielo nocturno de los diferentes exoplanetas en nuestra base de datos con un mapa interactivo.</p>
+                    </div>
+                </a>
             </div>
             <!-- Feature 2: Creación de Constelaciones -->
             <div class="col-md-4">
-                <div class="feature-card">
-                    <i class="fas fa-drafting-compass fa-3x mb-3"></i>
-                    <h4 class="cosmic-text">Creación de Constelaciones Personalizada</h4>
-                    <p class="cosmic-text">Diseña tus propias constelaciones y personaliza tu experiencia de observación.</p>
-                </div>
+                <a href="https://nasa24.netshiba.com/exploreV2">
+                    <div class="feature-card">
+                        <i class="fas fa-drafting-compass fa-3x mb-3 feature-icon"></i>
+                        <h4 class="cosmic-text">Creación de Constelaciones Personalizada</h4>
+                        <p class="cosmic-text">Diseña tus propias constelaciones y personaliza tu experiencia de observación.</p>
+                    </div>
+                </a>
             </div>
             <!-- Feature 3: Votación de Constelaciones -->
             <div class="col-md-4">
-                <div class="feature-card">
-                    <i class="fas fa-vote-yea fa-3x mb-3"></i>
-                    <h4 class="cosmic-text">Votación de Constelaciones</h4>
-                    <p class="cosmic-text">Participa y vota por tus constelaciones favoritas creadas por la comunidad.</p>
-                </div>
+                <a href="https://nasa24.netshiba.com/">
+                    <div class="feature-card">
+                        <i class="fas fa-vote-yea fa-3x mb-3 feature-icon"></i>
+                        <h4 class="cosmic-text">Votación de Constelaciones</h4>
+                        <p class="cosmic-text">Participa y vota por tus constelaciones favoritas creadas por la comunidad.</p>
+                    </div>
+                </a>
             </div>
-            <!-- Feature 4: Descarga de Datos -->
+            <!-- Feature 4: Carga de Datos -->
             <div class="col-md-4">
-                <div class="feature-card">
-                    <i class="fas fa-download fa-3x mb-3"></i>
-                    <h4 class="cosmic-text">Descarga de Datos</h4>
-                    <p class="cosmic-text">Descarga información detallada de planetas y estrellas en formatos como CSV o ZIP.</p>
-                </div>
-            </div>
-            <!-- Feature 5: Carga de Datos -->
-            <div class="col-md-4">
-                <div class="feature-card">
-                    <i class="fas fa-upload fa-3x mb-3"></i>
-                    <h4 class="cosmic-text">Carga de Datos</h4>
-                    <p class="cosmic-text">Sube tus propios datos de planetas y estrellas para enriquecer nuestra base de datos.</p>
-                </div>
+                <a href="https://nasa24.netshiba.com/stardata/uploadstars">
+                    <div class="feature-card">
+                        <i class="fas fa-upload fa-3x mb-3 feature-icon"></i>
+                        <h4 class="cosmic-text">Carga de Datos</h4>
+                        <p class="cosmic-text">Sube tus propios datos de planetas y estrellas para enriquecer nuestra base de datos.</p>
+                    </div>
+                </a>
             </div>
         </div>
     </div>
@@ -125,30 +125,28 @@
 
 @push('css')
 <style>
-    /* Custom styles for a cosmic appearance */
-    body {
-        background: linear-gradient(135deg, #0f2027, #203a43, #2c5364); /* Dark gradient background */
-        color: #e0e0e0; /* Light grey text for better contrast */
-        overflow-x: hidden; /* Prevent horizontal scroll */
-        background-attachment: fixed; /* Keep background fixed */
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modern font */
+    /* Estilos personalizados */
+    .cosmic-container {
+        background: transparent; /* Fondo transparente para el contenedor principal */
     }
 
-    /* Styles for the starry background */
+    /* Estilos del fondo */
     .stars {
+        background: black url('/path/to/stars-image.png') repeat; /* Fondo negro con puntos blancos que simulan estrellas */
         position: fixed;
-        top: 0;
-        left: 0;
         width: 100%;
         height: 100%;
-        background: url('path_to_your_starry_background_image.jpg') center center / cover no-repeat; /* Replace with your starry background image */
-        z-index: -1; /* Keep it behind content */
-        opacity: 0.7; /* Slight transparency */
+        top: 0;
+        left: 0;
+        z-index: -1;
+        opacity: 0.9;
     }
 
-    /* Styles for feature cards */
+    /* Estilos para las tarjetas */
     .feature-card {
-        background: rgba(25, 25, 112, 0.7); /* Midnight blue with transparency */
+        width: 300px;
+        height: 250px;
+        background: rgba(25, 25, 112, 0.7); /* Midnight blue */
         padding: 20px;
         border-radius: 15px;
         transition: transform 0.3s ease, background 0.3s ease;
@@ -156,138 +154,39 @@
         box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         backdrop-filter: blur(5px);
         border: 1px solid rgba(255, 255, 255, 0.1);
+        text-align: center;
+        margin: 0 auto;
     }
 
     .feature-card:hover {
         transform: translateY(-10px);
-        background: rgba(72, 61, 139, 0.8); /* Dark slate blue on hover */
+        background: rgba(72, 61, 139, 0.8); /* Cambia de color al hacer hover */
     }
 
-    .feature-card i {
-        color: #00bfff; /* Deep sky blue for icons */
-        transition: color 0.3s ease;
+    .feature-icon, .cosmic-text {
+        color: white;
     }
 
-    .feature-card:hover i {
-        color: #1e90ff; /* Dodger blue on hover */
+    .cosmic-title {
+        color: white;
+        text-shadow: 0 0 10px #fff;
     }
 
-    .feature-card h4 {
-        margin-top: 15px;
-        margin-bottom: 10px;
-        color: #ffffff; /* White color for titles */
+    /* Añadir margen entre los recuadros */
+    .row.g-4 > .col-md-4 {
+        margin-bottom: 20px;
     }
 
-    .feature-card p {
-        color: #dcdcdc; /* Gainsboro for descriptions */
-    }
-
-    /* Cosmic Cards */
-    .cosmic-card {
-        backdrop-filter: blur(10px); /* Blur effect for cards */
-        background-color: rgba(0, 0, 0, 0.5); /* Dark background with transparency */
-        border-radius: 15px; /* Rounded corners */
-        transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-        box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-    }
-
-    .cosmic-card:hover {
-        transform: scale(1.05); /* Slightly enlarge on hover */
-        box-shadow: 0 8px 60px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-    }
-
-    /* Buttons */
-    .btn-primary {
-        background-color: #1e90ff; /* Dodger blue */
-        border-color: #1e90ff;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
-
-    .btn-primary:hover {
-        background-color: #63b3ed; /* Light sky blue on hover */
-        border-color: #63b3ed;
-    }
-
-    .btn-success {
-        background-color: #32cd32; /* Lime green */
-        border-color: #32cd32;
-        transition: background-color 0.3s ease, border-color 0.3s ease;
-    }
-
-    .btn-success:hover {
-        background-color: #7cfc00; /* Lawn green on hover */
-        border-color: #7cfc00;
-    }
-
-    /* Particles for moving stars */
+    /* Efecto de estrellas en el fondo */
     .particle-background {
-        position: fixed;
-        top: 0;
-        left: 0;
+        background-image: url('/path/to/particles-background.png');
+        position: absolute;
         width: 100%;
         height: 100%;
+        top: 0;
+        left: 0;
         z-index: -2;
-        background: transparent;
-        pointer-events: none; /* Allow interaction with elements behind */
-    }
-
-    /* Star animations */
-    .particle {
-        position: absolute;
-        width: 2px;
-        height: 2px;
-        background: white;
-        border-radius: 50%;
-        opacity: 0.8;
-        animation: twinkle 5s infinite;
-    }
-
-    @keyframes twinkle {
-        0%, 100% { opacity: 0.8; }
-        50% { opacity: 0.2; }
-    }
-
-    /* Responsive tweaks */
-    @media (max-width: 768px) {
-        .cosmic-title {
-            font-size: 2rem;
-        }
-        .feature-card h4 {
-            font-size: 1.2rem;
-        }
-        .feature-card p {
-            font-size: 0.9rem;
-        }
-    }
-
-    .content-wrapper {
-        background-color: #121212; /* Color de fondo oscuro */
-        color: #ffffff; /* Color de texto para que sea legible */
-    }
-    .main-footer {
-        background-color: #343a40; /* Color de fondo oscuro */
-        color: #ffffff; /* Color de texto para que sea legible */
+        opacity: 0.7;
     }
 </style>
-@endpush
-
-@push('scripts')
-<script>
-    // JavaScript to generate moving particles
-    function createParticles() {
-        const particleContainer = document.querySelector('.particle-background');
-        for (let i = 0; i < 100; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            particle.style.top = `${Math.random() * 100}%`;
-            particle.style.left = `${Math.random() * 100}%`;
-            particle.style.animationDuration = `${Math.random() * 15 + 5}s`; // Random speed
-            particle.style.opacity = `${Math.random()}`;
-            particleContainer.appendChild(particle);
-        }
-    }
-
-    // Call the function to create particles on page load
-    document.addEventListener('DOMContentLoaded', createParticles);
-</script>
 @endpush
