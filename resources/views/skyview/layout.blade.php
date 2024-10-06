@@ -1,11 +1,211 @@
-<!-- /var/www/html/hacknasa24/resources/views/skyview/layout.blade.php -->
-
 @extends('layouts.app')
 
 @section('subtitle', 'Star Field')
 
 @section('content_body')
-    @include("skyview.{$view}")
+    <div id="threejs-container">
+        <div id="info">
+            <div id="text_tutorial">
+                <p>Planet ID: {{ $data['id'] }}</p>
+                <p>Planet Name: {{ $data['name'] }}</p>
+                <p>Star Name: {{ $data['star_name'] }}</p>
+                <button class="btn btn-outline-dark btn-sm" style="color:white" id="hide-tutorial">X</button>
+            </div>
+        </div>
+        <div id="star-info" style="position: absolute; color: white; font-family: Arial, sans-serif; z-index: 1;"></div>
+        <div id="angle-display" style="position: absolute; top: 30px; right: 270px; color: white; z-index: 1;">Ángulo: 0°</div>
+        <div id="popup-menu" style="position: absolute; top: 30px; left: 20px; width: 250px; background-color: rgba(128, 128, 128, 0.2); color: white; padding: 10px; border-radius: 5px; display: none;">
+            <div id="popup-content"></div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+
+    <script>
+         document.addEventListener('DOMContentLoaded', function() {
+
+            
+        // Ocultar el text_tutorial cuando se haga clic en el botón
+        const hideTutorialButton = document.getElementById('hide-tutorial');
+        hideTutorialButton.addEventListener('click', function() {
+            const textTutorial = document.getElementById('text_tutorial');
+            textTutorial.style.display = 'none';
+        });
+
+        // Escena, cámara y renderizador
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        // Asegúrate de que el canvas se renderice dentro del contenedor adecuado
+        const container = document.getElementById('threejs-container');
+        container.appendChild(renderer.domElement);
+
+        // Añadir un helper para visualizar los ejes en el centro
+        // const axesHelper = new THREE.AxesHelper(20); // Muestra los ejes de 20 unidades de longitud
+        // scene.add(axesHelper);
+
+        // Crear estrellas en posiciones específicas
+        const stars = [];
+        function createStars() {
+            const starGeometry = new THREE.SphereGeometry(0.5, 24, 24);
+
+            @foreach($data['stars'] as $star)
+                {
+                    let color = new THREE.Color(`hsl(${Math.random() * 360}, 70%, 85%)`); // Colores suaves
+                    let starMaterial = new THREE.MeshBasicMaterial({ color: color });
+                    let star = new THREE.Mesh(starGeometry, starMaterial); // Variable única para cada estrella
+                    star.position.set({{ $star['x'] }}, {{ $star['y'] }}, {{ $star['z'] }});
+                    star.userData = { opacityDirection: 1, opacitySpeed: Math.random() * 0.05 + 0.01 };
+                    scene.add(star);
+                    stars.push(star);
+                }
+            @endforeach
+        }
+        createStars();
+
+
+        const rotationSpeed = 0.001;
+        function rotateStars() {
+            stars.forEach(star => {
+                star.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), rotationSpeed);
+            });
+        }
+        function twinkleStars() {
+            stars.forEach(star => {
+                star.material.opacity += star.userData.opacityDirection * star.userData.opacitySpeed;
+                if (star.material.opacity >= 1 || star.material.opacity <= 0.8) {
+                    star.userData.opacityDirection *= -1; // Cambiar dirección del parpadeo
+                }
+                star.material.transparent = true;
+            });
+        }
+        // Posicionar la cámara en el centro del espacio
+        camera.position.set(0, 0, 10); // La cámara en el punto (0,0,10), mirando hacia el centro
+
+        // Controles de la cámara con restricciones
+        const controls = new THREE.OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.dampingFactor = 0.05;
+        controls.enableZoom = false;            // Desactivar zoom
+        controls.enableRotate = true;           // Permitir rotar
+        controls.enablePan = false;             // Desactivar panning
+        controls.maxPolarAngle = Math.PI;   // Limitar rotación hacia arriba a 90 grados
+        controls.minPolarAngle = -Math.PI;      // Limitar rotación hacia abajo a -180 grados
+        controls.screenSpacePanning = false;    // Deshabilita el panning
+        controls.target.set(0, 0, 0);           // La cámara mira hacia el centro (0, 0, 0)
+
+        // Mostrar ángulo de rotación
+        const angleDisplay = document.getElementById('angle-display');
+        function updateAngleDisplay() {
+            const phi = THREE.MathUtils.radToDeg(controls.getPolarAngle()); // Ángulo hacia arriba o abajo
+            angleDisplay.innerText = `Ángulo: ${phi.toFixed(2)}°`;
+        }
+
+        // Raycaster para detectar clics en las estrellas
+        const raycaster = new THREE.Raycaster();
+        const mouse = new THREE.Vector2();
+
+        // Función para generar un poema corto
+        function generatePoem() {
+            const poems = 
+            [
+            "In the night sky, a star takes flight,\nA tiny flicker, a beacon of light,\nIn the vast expanse, its glow sincere,\nA guide through darkness, ever near.",
+
+            "High above, the star ascends,\nIts light a promise, a hope that mends,\nIn the quiet night, it softly bends,\nA dream that never truly ends.",
+
+            "Upon the heavens, the stars do rise,\nTheir glimmer reflecting in weary eyes,\nIn the silent night, no need for disguise,\nA journey unfolds beneath the skies.",
+
+            "In the darkest hours, a star will stay,\nIts light a whisper that leads the way,\nIn the endless night, its beams convey,\nA truth unspoken, come what may.",
+
+            "Amid the stars, a story is told,\nOf dreams untouched, of hearts so bold,\nIn the vastness, their secrets unfold,\nA promise of warmth in the night's cold.",
+
+            "Through the quiet sky, a star will call,\nIts light a thread connecting all,\nIn the distance, its shadows fall,\nA sign of hope, however small.",
+
+            "A star's soft gleam in the midnight air,\nIts light a balm for each despair,\nIn the endless sky, it shines so fair,\nA spark of joy we long to share.",
+
+            "In the boundless sky, a star takes hold,\nIts silver fire, its heart of gold,\nIn the vast unknown, a tale is told,\nA dream of peace that won't grow old.",
+
+            "The star's light shines in the silent night,\nA steadfast glow, a gentle might,\nIn the endless dark, its hope takes flight,\nA distant dream that feels so right.",
+
+            "Above the world, a star does gleam,\nIts glow a wish, a brightened stream,\nIn the quiet dark, it casts a beam,\nA flicker of hope, a cherished dream.",
+
+            "Beyond the clouds, the stars appear,\nTheir light a comfort, always near,\nIn the deepest night, they have no fear,\nA silent guide through every tear.",
+
+            "In the velvet sky, the stars reside,\nTheir brilliance bright, their light a guide,\nIn the silent dark, they never hide,\nA path to hope, a dream beside.",
+
+            "Under the moon, the stars ignite,\nTheir silver beams, a tranquil sight,\nIn the darkest hours, they bring the light,\nA promise of dawn, soft and bright.",
+
+            "The stars above, in quiet grace,\nTheir glow a memory time can’t erase,\nIn the endless sky, they leave no trace,\nYet in our hearts, they find a place.",
+
+            "In the stillness, a star does burn,\nIts light a beacon, a soul's return,\nIn the endless night, we look and yearn,\nA dream to hold, a wish to learn.",
+
+            "Among the stars, a story waits,\nA whispered hope beyond the gates,\nIn the dark, their beauty creates,\nA dream of peace that never abates.",
+
+            "The stars aloft, so pure and bright,\nTheir glow a lantern in the night,\nIn the darkest sky, they give us sight,\nA song of dreams, taking flight.",
+
+            "Through the vastness, the stars remain,\nA gentle light in night's domain,\nIn the quiet dark, they ease the pain,\nA hope reborn through joy and strain.",
+
+            "Between the stars, a truth is found,\nA light that knows no earthly bound,\nIn the endless night, they sing around,\nA melody pure, a sacred sound.",
+
+            "In the starry sky, a light will glow,\nIts gentle warmth, a steady flow,\nIn the endless night, it lets us know,\nThat hope endures, wherever we go.",
+            ];
+            return poems[Math.floor(Math.random() * poems.length)];
+        }
+
+        window.addEventListener('click', function(event) {
+            const rect = container.getBoundingClientRect();
+            const offsetX = event.clientX - rect.left;
+            const offsetY = event.clientY - rect.top;
+
+            mouse.x = (offsetX / container.clientWidth) * 2 - 1;
+            mouse.y = -(offsetY / container.clientHeight) * 2 + 1;
+
+            raycaster.setFromCamera(mouse, camera);
+            const intersects = raycaster.intersectObjects(stars);
+
+            const popupMenu = document.getElementById('popup-menu');
+            const popupContent = document.getElementById('popup-content');
+
+            if (intersects.length > 0) {
+                const star = intersects[0].object;
+                const { x, y, z } = star.position;
+                const poem = generatePoem();
+                popupContent.innerHTML = `
+                    <p>Star coordinates:</p>
+                    <p>X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, Z: ${z.toFixed(2)}</p>
+                    <p>${poem}</p>
+                `;
+                popupMenu.style.display = 'block';
+            } else {
+                popupMenu.style.display = 'none';
+            }
+        });
+
+        // Animar la escena
+        function animate() {
+            requestAnimationFrame(animate);
+            rotateStars(); // Llamar a la función de rotación
+            twinkleStars(); // Llamar a la función de parpadeo
+            controls.update();
+            updateAngleDisplay(); // Actualiza el ángulo en pantalla
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Ajustar el tamaño del canvas al redimensionar la ventana
+        window.addEventListener('resize', function() {
+            const width = window.innerWidth;
+            const height = window.innerHeight;
+            renderer.setSize(width, height);
+            camera.aspect = width / height;
+            camera.updateProjectionMatrix();
+        });
+        
+    });
+    </script>
 
     @if(session('errorMessage'))
         <script>

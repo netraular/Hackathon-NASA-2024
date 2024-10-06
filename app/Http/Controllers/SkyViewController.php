@@ -9,10 +9,27 @@ class SkyViewController extends Controller
 
     public function exoplanets()
     {
-        $data = [
-            'id' => 1,
-        ];
-        return view('skyview.layout', ['view' => 'exoplanets', 'data' => 'data']);
+        $csvFile = file("/var/www/html/hacknasa24/app/Scripts/translator/new_output.csv");
+        $planetas = [];
+        $i = -1;
+        foreach ($csvFile as $line)
+        {
+            if ($i % 2000 == 0)
+            {
+                $datas = str_getcsv($line);
+                $data = [
+                    'id' => $i / 2000 + 1,
+                    'planet_name' => $datas[0],
+                    'name' => $datas[1],
+                    'dist' => $datas[5],
+                ];
+                array_push($planetas, $data);
+                // dd($planetas[0]["name"]);
+            }
+            $i++;
+        }
+        
+        return view('skyview.exoplanets', ['planets' => $planetas]);
     }
     public function exoskyV3()
     {
@@ -33,7 +50,14 @@ class SkyViewController extends Controller
         {
             if ($i / 2000 != $id - 1 && $i / 2000 != $id && $inPlanet)
             {
-                array_push($starData, $line);
+                $datas2 = str_getcsv($line);
+                $star = [
+                    'name' => $datas2[0],
+                    'x' => mt_rand(-1000000, 1000000)/5000,
+                    'y' => mt_rand(-1000000, 1000000)/5000,
+                    'z' => mt_rand(-1000000, 1000000)/5000,
+                ];
+                array_push($starData, $star);
             }
             else if ($i / 2000 == $id)
             {
@@ -50,8 +74,17 @@ class SkyViewController extends Controller
                 $datas = str_getcsv($line);
                 $inPlanet = true;
             }
+            $i++;
         }
-
-        return view('skyview.layout', ['view' => 'exoplanet', 'data' => $data]);
+        if ($i > 99999)
+        {
+            $data = [
+                'id' => $id,
+                'name' => $datas[1], // Puedes personalizar esto según tus necesidades
+                'star_name' => $datas[0],
+                'stars' => $starData,
+            ];
+        }
+        return view('skyview.layout', ['data' => $data]);
     }
 }

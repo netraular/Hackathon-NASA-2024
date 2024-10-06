@@ -6,24 +6,7 @@
     <div id="threejs-container">
         <div id="info">
             <div id="text_tutorial">
-            Elegir Planeta desde el que Visualizar el Cielo <br>
-
-Visualizar Cielo en 2D o 3D<br>
-
-Transformar Coordenadas de Estrellas a Vista 3D o 2D<br>
-
-Simular Efectos de Atmósfera sobre la Visibilidad de las Estrellas<br>
-
-Aplicar Filtros para Personalizar la Vista<br>
-
-*Permitir tener un modo para crear constelaciones:<br>
-Crear Constelaciones Eligiendo Estrellas<br>
-
-Ver Constelaciones Creadas sin Saturar el Cielo con Líneas<br>
-
-Exportar Imágenes del Cielo con Constelaciones<br>
-
-Generar Enlaces para Compartir Constelaciones
+                    Here you can create your own constellations and share it with others.
                 <button class="btn btn-outline-dark btn-sm" style="color:white" onclick="document.getElementById('text_tutorial').style.display = 'none';">X</button>
             </div>
         </div>
@@ -399,7 +382,7 @@ Generar Enlaces para Compartir Constelaciones
             }
             .controls {
                 position: absolute;
-                top: 10px;
+                top: 30px;
                 left: 10px;
                 z-index: 2;
             }

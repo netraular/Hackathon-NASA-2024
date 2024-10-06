@@ -12,28 +12,33 @@
     <!-- Sección de carga de archivo CSV -->
     <div class="container-fluid" style="padding: 20px; text-align: center; position: relative; overflow: hidden; margin: 0;"> <!-- Sin márgenes ni paddings -->
         <div class="card" style="background-color: #1a2530; color: white; border: none; padding: 20px; border-radius: 8px;"> <!-- Eliminar la línea negra -->
+            <h3 class="card-title" style=" font-size: 2rem; color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold;">
+                Upload CSV of Star Coordinates 🌟
+            </h3>
             <div class="card-header">
-                <h3 class="card-title" style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold;">
-                    Upload CSV of Star Coordinates 🌟
-                </h3>
                 <br>
-                <p style="font-family: 'Poppins', sans-serif; color: #e0e0e0;">
+                <p style="font-size: 1.5rem; font-family: 'Poppins', sans-serif; color: #e0e0e0;">
                     Choose a CSV file to upload with star coordinates and click below to process it!
                 </p>
+                <p style="font-size: 1.5rem; font-family: 'Poppins', sans-serif; color: #e0e0e0; margin-top: 20px;">
+                    Example of CSV file to upload:
+                </p>
+                <img src="{{ asset('images/output ex.png') }}" alt="Example CSV file" style="max-width: 100%; height: auto; margin-top: 10px;">
             </div>
             <div class="card-body">
                 <form action="{{ route('csv.process') }}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
-                        <label for="csv_file" style="font-family: 'Poppins', sans-serif; color: #e0e0e0;">Select a CSV file</label> <!-- Traducción del texto -->
-                        <p style="font-family: 'Poppins', sans-serif; color: #e0e0e0;">
-                            Click "Process CSV" to see the magic happen! ✨ <!-- Traducción del texto -->
-                        </p>
+                        <label for="csv_file" style="font-family: 'Poppins', sans-serif; color: #e0e0e0;"> 1- Select a CSV file </label>
+                        <br> <!-- Traducción del texto -->
+                        <label style="font-family: 'Poppins', sans-serif; color: #e0e0e0;">
+                            2- Click "Process CSV" to see the magic happen! ✨ <!-- Traducción del texto -->
+                        </label>
+                        <br>
                         <input type="file" class="form-control-file" id="csv_file" name="csv_file">
                     </div>
                     <button type="submit" class="btn btn-primary" style="font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 1.2em; padding: 15px 30px;">Process CSV</button> <!-- Botón en inglés -->
                 </form>
-                <!-- <button id="test-script-btn" class="btn btn-secondary mt-3" style="font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 1.2em; padding: 15px 30px;">Run C# Script</button>  -->
             </div>
         </div>
     </div>

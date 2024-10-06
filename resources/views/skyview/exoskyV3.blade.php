@@ -63,7 +63,7 @@
         controls.dampingFactor = 0.05;
         controls.enableZoom = false;            // Desactivar zoom
         controls.enableRotate = true;           // Permitir rotar
-        controls.maxPolarAngle = Math.PI / 2;   // Limitar rotación hacia arriba a 90 grados
+        controls.maxPolarAngle = Math.PI;   // Limitar rotación hacia arriba a 90 grados
         controls.minPolarAngle = -Math.PI;      // Limitar rotación hacia abajo a -180 grados
         controls.screenSpacePanning = false;    // Deshabilita el panning
         controls.target.set(0, 0, 0);           // La cámara mira hacia el centro (0, 0, 0)

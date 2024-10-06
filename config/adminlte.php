@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>EXOSKY!</b>',
+    'logo' => '<b>COSMOSCAPE!</b>',
     'logo_img' => './favicon.png',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
@@ -325,29 +325,29 @@ return [
         'url' => 'explore',
         'icon' => 'fas fa-fw fa-sun',
         'submenu' => [
-            [
-                'text' => 'V1',
-                'url' => 'exploreV1',
-                'icon' => 'fas fa-fw fa-star-half',
-            ],
-            [
-                'text' => 'V2',
-                'url' => 'exploreV2',
-                'icon' => 'fas fa-fw fa-star',
-            ],
-            [
-                'text' => 'V3',
-                'url' => 'skyview/exoskyV3',
-                'icon' => 'fas fa-fw fa-star',
-            ],
+            // [
+            //     'text' => 'V1',
+            //     'url' => 'exploreV1',
+            //     'icon' => 'fas fa-fw fa-star-half',
+            // ],
+            // [
+            //     'text' => 'V3',
+            //     'url' => 'skyview/exoskyV3',
+            //     'icon' => 'fas fa-fw fa-star',
+            // ],
             [
                 'text' => 'Planet menu',
                 'url' => 'skyview/exoplanets', // Modificado para apuntar a /skyview/exoplanets
                 'icon' => 'fas fa-fw fa-globe',
             ],
             [
-                'text' => 'Data planet',
+                'text' => 'Exoplanet 1',
                 'url' => 'skyview/exoplanet/1', // Modificado para apuntar a /skyview/exoplanets
+                'icon' => 'fas fa-fw fa-star',
+            ],
+            [
+                'text' => 'Create a constellation',
+                'url' => 'exploreV2',
                 'icon' => 'fas fa-fw fa-star',
             ],
         ],

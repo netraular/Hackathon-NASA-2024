@@ -5,17 +5,17 @@
 @section('content_body')
 
 <div class="container text-center" style="margin-top: 20px;">
-    <h4 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 3em;">🌌 Project Name 🚀</h4>
+    <h4 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 3em;">🌌 Cosmoscape 🚀</h4>
 </div>
 
 <div class="container" style="margin-top: 20px; color: #e0e0e0; font-family: 'Poppins', sans-serif; font-size: 1.2em;">
-    <p style="text-align: justify;">This project, part of the NASA 2024 Hackathon, is about imagining what the night sky would look like from different exoplanets. The interactive website lets users explore the stars from 50 exoplanets and access scientific information about them. 🌠 Users can also create their own constellations, name them, and save them, allowing others to see and interact with these new designs. By turning complex data into something creative and interactive, this project helps make distant worlds more relatable, inspiring curiosity and imagination. Beyond the fun, it’s about connecting students and young people with space, fostering a sense of wonder about the universe and sparking interest in science and astronomy. ✨</p>
+    <p style="font-size: 1.5rem; text-align: justify;">This project, part of the NASA 2024 Hackathon, is about imagining what the night sky would look like from different exoplanets. The interactive website lets users explore the stars from 50 exoplanets and access scientific information about them. 🌠 Users can also create their own constellations, name them, and save them, allowing others to see and interact with these new designs. By turning complex data into something creative and interactive, this project helps make distant worlds more relatable, inspiring curiosity and imagination. Beyond the fun, it’s about connecting students and young people with space, fostering a sense of wonder about the universe and sparking interest in science and astronomy. ✨</p>
 
-    <p style="text-align: justify;">👨‍💻👩‍💻 We are a team of six young people, aged 21 to 25, from both Spain and Italy, each with different educational backgrounds. Together, we bring diverse skills and perspectives to the project. 💫 Our project aims to make an educational impact by bridging the gap between complex scientific data and young minds, promoting creativity and learning through technology and space exploration.</p>
+    <p style=" font-size: 1.5rem; text-align: justify;">👨‍💻👩‍💻 We are a team of six young people, aged 21 to 25, from both Spain and Italy, each with different educational backgrounds. Together, we bring diverse skills and perspectives to the project. 💫 Our project aims to make an educational impact by bridging the gap between complex scientific data and young minds, promoting creativity and learning through technology and space exploration.</p>
 
-    <p style="text-align: justify;">💻 Github: <a href="https://github.com/netraular/Hackathon-NASA-2024" target="_blank">https://github.com/netraular/Hackathon-NASA-2024</a></p>
+    <p style="font-size: 1.5rem; text-align: justify;">💻 Github: <a href="https://github.com/netraular/Hackathon-NASA-2024" target="_blank">https://github.com/netraular/Hackathon-NASA-2024</a></p>
 
-    <p style="text-align: justify;">💌 Contact Emails:</p>
+    <p style="font-size: 1.5rem; text-align: justify;">💌 Contact Emails:</p>
     <div style="text-align: center;">
         <ul style="list-style-type: none; padding-left: 0; color: #e0e0e0;">
             <li style="margin-bottom: 5px;">bielbag21@gmail.com</li>

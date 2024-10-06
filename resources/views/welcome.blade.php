@@ -68,7 +68,7 @@
         🪅 About the Project:
     </h4>
     <p class="dynamic-text pb-3" style="font-size: 1.5em; color: #e0e0e0; line-height: 1.6; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); text-align: left;"> <!-- Cambiado a alineación a la izquierda -->
-        🌌 ExoSky! is a project that aims to show how the night sky would look from various exoplanets.<br>
+        🌌 Cosmoscape is a project that aims to show how the night sky would look from various exoplanets.<br>
         🔭 Using real astronomical data, we transform the coordinates of stars as seen from Earth.<br>
         🚀 Our goal is to inspire young minds and spark their interest in space exploration!<br>
         🌠 Explore the universe from new perspectives and feel the excitement of scientific discovery! ✨
@@ -79,14 +79,10 @@
 @stop
 
 @section('footer')
-
-<div style="text-align: center; margin: 0;"> <!-- Centrado y sin margen -->
+<div style="text-align: center; margin: 0;">
     <h5 style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.7);">🌌 Explore the Universe with Us!</h5>
-    <p style="text-align: justify;"> <!-- Justificado -->
-        🚀 Join our mission to inspire future astronomers and space explorers!
-    </p>
+    <p style="text-align: center;"> 🚀 Join our mission to inspire future astronomers and space explorers!</p>
 </div>
-
 @stop
 
 @push('css')
@@ -157,7 +153,7 @@
     }
 
     .content-wrapper {
-        background-color: #121212; /* Color de fondo oscuro */
+        background: linear-gradient(to bottom, #000000, #3f0051) !important;
         color: #ffffff; /* Color de texto para que sea legible */
     }
 
