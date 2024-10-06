@@ -7,7 +7,7 @@
     </div>
     <div id="star-info" style="position: absolute; color: white; font-family: Arial, sans-serif; z-index: 1;"></div>
     <div id="angle-display" style="position: absolute; top: 30px; right: 270px; color: white; z-index: 1;">Ángulo: 0°</div>
-    <div id="popup-menu" style="position: absolute; top: 10px; right: 10px; width: 250px; background-color: rgba(0, 0, 0, 0.8); color: white; padding: 10px; border-radius: 5px; display: none;">
+    <div id="popup-menu" style="position: absolute; top: 30px; left: 20px; width: 250px; background-color: rgba(128, 128, 128, 0.2); color: white; padding: 10px; border-radius: 5px; display: none;">
         <div id="popup-content"></div>
     </div>
 </div>

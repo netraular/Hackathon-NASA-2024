@@ -6,13 +6,13 @@
 
 <!-- Sección de fotos con fade en la parte superior -->
 <div class="container-fluid" style="padding: 20px; text-align: center; position: relative; overflow: hidden; margin: 0;"> <!-- Sin márgenes ni paddings -->
-    <div id="fade-images" class="d-flex justify-content-center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 0;">
+    <div id="fade-images" class="d-flex justify-content-center" style="position: absolute; width: 100%; height: 100%; top: 0; left: 0; z-index: 1;"> <!-- Aumentado z-index -->
         <img src="{{ asset('images/1.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
         <img src="{{ asset('images/2.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
         <img src="{{ asset('images/3.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
         <img src="{{ asset('images/4.png') }}" style="width: 100%; height: 100%; position: absolute; opacity: 0;">
     </div>
-    <h4 class="text-center" style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 3em; position: relative; z-index: 1; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
+    <h4 class="text-center" style="color: #ff7e00; font-family: 'Poppins', sans-serif; font-weight: bold; font-size: 3em; position: relative; z-index: 2; text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);">
         ✨ Stunning Views of Skies from Other Worlds:
     </h4>
 </div>
@@ -105,7 +105,7 @@
 
     /* Colores del espacio */
     body {
-        background: linear-gradient(to bottom, #000000, #3f0051); /* Degradado de negro a lila oscuro */
+        background: linear-gradient(to bottom, #000000, #3f0051); /* Degradado de negro a morado */
         margin: 0; /* Eliminando margen predeterminado del body */
         padding: 0; /* Eliminando padding predeterminado del body */
     }
@@ -116,7 +116,7 @@
     }
 
     .card {
-        background-color: #1e3a5f;
+        background-color: #1e3a5f; /* Color de fondo de las tarjetas */
     }
 
     .btn-outline-light {
@@ -160,6 +160,7 @@
         background-color: #121212; /* Color de fondo oscuro */
         color: #ffffff; /* Color de texto para que sea legible */
     }
+
     .main-footer {
         background-color: #343a40; /* Color de fondo oscuro */
         color: #ffffff; /* Color de texto para que sea legible */
@@ -183,4 +184,3 @@
     setInterval(changeImage, 6000);
 </script>
 @endpush
-

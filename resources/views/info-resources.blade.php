@@ -29,7 +29,7 @@
     <hr class="my-4" style="border-top: 2px solid #1b263b;">
 
     <!-- Contenido: Bienvenida -->
-    <div class="container-fluid my-5 mb-0 text-center position-relative cosmic-container">
+    <div class="container-fluid mt-5 pb-2 mb-0 text-center position-relative cosmic-container ">
 
         <!-- Tutorial y descargas -->
         <div class="row mb-5 justify-content-center">

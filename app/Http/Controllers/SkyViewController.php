@@ -25,55 +25,32 @@ class SkyViewController extends Controller
         $exoplanets = range(1, 50);
         $i = -1;
         $starData = [];
+        $inPlanet = false;
         if (!in_array($id, $exoplanets)) {
             return redirect('/skyview/exoplanets')->with('errorMessage', 'The selected planet does not exist.');
         }
         foreach ($csvFile as $line)
         {
-            if ($i / 2000 != $id - 1 && $i / 2000 != $id)
+            if ($i / 2000 != $id - 1 && $i / 2000 != $id && $inPlanet)
             {
-                // dd("AAAAAAAAAAAA");
-                $i++;
-                continue;
+                array_push($starData, $line);
             }
             else if ($i / 2000 == $id)
             {
-                dd("BBBBBBBBBB");
+                $data = [
+                    'id' => $id,
+                    'name' => $datas[1], // Puedes personalizar esto según tus necesidades
+                    'star_name' => $datas[0],
+                    'stars' => $starData,
+                ];
                 break ;
             }
             else if ($i / 2000 == $id - 1)
             {
-                dd($i);
+                $datas = str_getcsv($line);
+                $inPlanet = true;
             }
-            // else if ($i % 2000)
-            // {
-            //     if ($i > 100)
-            //     {
-            //         $data = [
-            //             'id' => $id,
-            //             'name' => $datas[1], // Puedes personalizar esto según tus necesidades
-            //             'star_name' => $datas[0],
-            //             'stars' => $starData,
-            //         ];
-            //         dump($i / 2000);
-            //         if ($i / 2000 == $id + 1)
-            //             break ;
-            //     }
-            //     $datas = str_getcsv($line);
-            //     $starData = [];
-            // }
-            // else
-            // {
-            //     array_push($starData, $line);
-            // }
-            // $i++;
         }
-        $data = [
-            'id' => $id,
-            'name' => '1', // Puedes personalizar esto según tus necesidades
-            'star_name' => '2',
-            'stars' => $starData,
-        ];
 
         return view('skyview.layout', ['view' => 'exoplanet', 'data' => $data]);
     }
