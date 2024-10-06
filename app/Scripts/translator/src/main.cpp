@@ -47,7 +47,6 @@ int main() {
             }
             else
             {
-
                 Star    newStar(values[0], std::stod(values[5]),std::stod(values[2]),std::stod(values[3]));
                 planets[int(i / 2000)].push_star(newStar);
             }

@@ -65,10 +65,9 @@ public:
         std::vector<Star>::iterator begin = stars.begin();
         std::vector<Star>::iterator end = stars.end();
 
-        this->exoplanetData = this->exoplanetData.SphericalTransData(this->exoplanetData);
         for (; begin != end; begin++)
         {
-            begin->SetData(begin->ProjectBodyOverStar());
+            begin->SetData(this->exoplanetData.SphericalTransData(begin->GetData()));
             begin->realDistance(this->exoplanetData.getDistance());
         }
     }

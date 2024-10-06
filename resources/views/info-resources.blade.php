@@ -1,431 +1,217 @@
 @extends('layouts.app')
 
-<!-- Incluye Particles.js CDN -->
-<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
-
-<!-- Incluye Font Awesome CDN en la sección <head> de tu layout principal -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZkTyqL6W76f+2fJH+u5oJ+jB/ocEw7h4/YbQjCe1PPkRYbJ0vKlJmB8cF1kSga28iM6h5g1D59G+gKzg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
 @section('subtitle', 'Welcome Page')
 
 @section('content_body')
-<!-- Contenedor de Particles.js -->
-<div id="particles-js"></div>
-
-<div class="container my-5 content-wrapper">
-    <!-- Título Principal -->
-    <div class="text-center mb-5 dynamic-title">
-        <h1 class="display-1 fw-extrabold">Welcome to ChatGPT for Exoplanet Information 🌌</h1>
-        <p class="lead">Explore the universe with us and discover fascinating data about exoplanets.</p>
+<div class="container-fluid my-5 text-center position-relative">
+    <!-- Main Title -->
+    <div class="mb-5">
+        <h1 class="display-4 fw-bold cosmic-title">Welcome to ChatGPT for Exoplanet Information 🌌</h1>
+        <p class="lead cosmic-text">Explore the universe with us and discover fascinating facts about exoplanets.</p>
     </div>
 
-    <!-- Sección de Tutorial y Descargas -->
-    <div class="row mb-5">
+    <!-- Tutorial and Downloads Section -->
+    <div class="row mb-5 justify-content-center">
         <div class="col-md-6">
-            <div class="card content-card shadow-lg h-100">
+            <div class="card h-100 rounded-3 bg-transparent text-light border-0 animate-card cosmic-card">
                 <div class="card-body">
-                    <h3 class="card-title">User Guide</h3>
-                    <p class="card-text">Learn how to navigate our website and make the most of its features.</p>
-                    <a href="#" class="btn btn-primary">View Guide</a>
+                    <h3 class="card-title cosmic-text">Operation Tutorial</h3>
+                    <p class="card-text cosmic-text">Learn how to navigate our website and make the most of its features.</p>
+                    <a href="#" class="btn btn-primary">View Tutorial</a>
                 </div>
             </div>
         </div>
         <div class="col-md-6 mt-4 mt-md-0">
-            <div class="card content-card shadow-lg h-100">
+            <div class="card h-100 rounded-3 bg-transparent text-light border-0 animate-card cosmic-card">
                 <div class="card-body">
-                    <h3 class="card-title">Download Data</h3>
-                    <p class="card-text">Obtain locally generated data in CSV or ZIP formats.</p>
+                    <h3 class="card-title cosmic-text">Download Data</h3>
+                    <p class="card-text cosmic-text">Get the generated data in your local formats, CSV or ZIP.</p>
                     <a href="#" class="btn btn-success">Download Now</a>
                 </div>
             </div>
         </div>
     </div>
 
-    <hr class="space-divider">
+    <hr class="border-light">
 
-    <!-- Sección de Características del Proyecto con Accordion Minimalista -->
+    <!-- Project Features with Accordion -->
     <div class="mb-5">
-        <h2 class="mb-4 text-section">Project Features 🌟</h2>
-        <div class="accordion space-accordion minimal-accordion" id="featuresAccordion">
-            <div class="accordion-item space-accordion-item">
+        <h2 class="mb-4 cosmic-text">Project Features 🌟</h2>
+        <div class="accordion text-light" id="featuresAccordion">
+            <div class="accordion-item bg-transparent border-light">
                 <h2 class="accordion-header" id="headingConstellations">
-                    <button class="accordion-button minimal-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseConstellations" aria-expanded="true" aria-controls="collapseConstellations">
-                        Custom Constellation Creation ✨
+                    <button class="accordion-button text-light cosmic-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseConstellations" aria-expanded="true" aria-controls="collapseConstellations">
+                        Creation of Custom Constellations ✨
                     </button>
                 </h2>
                 <div id="collapseConstellations" class="accordion-collapse collapse show" aria-labelledby="headingConstellations" data-bs-parent="#featuresAccordion">
-                    <div class="accordion-body">
-                        <ul class="feature-list">
-                            <li>Interactive constellation design.</li>
-                            <li>Personalized observation experiences.</li>
+                    <div class="accordion-body cosmic-text">
+                        <ul>
+                            <li>Interactive design of constellations.</li>
+                            <li>Customization of the observation experience.</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="accordion-item space-accordion-item">
+            <div class="accordion-item bg-transparent border-light">
                 <h2 class="accordion-header" id="headingObservation">
-                    <button class="accordion-button collapsed minimal-accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseObservation" aria-expanded="false" aria-controls="collapseObservation">
+                    <button class="accordion-button collapsed text-light cosmic-text" type="button" data-bs-toggle="collapse" data-bs-target="#collapseObservation" aria-expanded="false" aria-controls="collapseObservation">
                         Sky Observation 🔭
                     </button>
                 </h2>
                 <div id="collapseObservation" class="accordion-collapse collapse" aria-labelledby="headingObservation" data-bs-parent="#featuresAccordion">
-                    <div class="accordion-body">
-                        <ul class="feature-list">
-                            <li>Visualization from any location in space.</li>
-                            <li>Immersive nocturnal sky experience.</li>
+                    <div class="accordion-body cosmic-text">
+                        <ul>
+                            <li>Viewing from any corner of space.</li>
+                            <li>Immersive experience of the night sky.</li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <!-- Añade más elementos de accordion según sea necesario -->
+            <!-- Add more accordions as necessary -->
         </div>
     </div>
 
-    <hr class="space-divider">
+    <hr class="border-light">
 
-    <!-- Sección de Definiciones con Tarjetas -->
+    <!-- Definitions with Cards -->
     <div class="mb-5">
-        <h2 class="mb-4 text-section">Definitions 🔭</h2>
-        <div class="row g-4">
+        <h2 class="mb-4 cosmic-text">Definitions 🔭</h2>
+        <div class="row g-4 justify-content-center">
             <div class="col-md-4">
-                <div class="card content-card shadow-lg h-100">
+                <div class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 animate-card cosmic-card">
                     <div class="card-body">
-                        <h4 class="card-title">Exoplanet 🌍</h4>
-                        <p class="card-text">An exoplanet is a planet that exists outside our solar system, orbiting a star other than the Sun. They vary in size, composition, and distance, ranging from rocky planets like Earth to gas giants like Jupiter 🪐.</p>
+                        <h4 class="card-title cosmic-text">Exoplanet 🌍</h4>
+                        <p class="card-text cosmic-text">An exoplanet is a planet that exists outside our solar system, orbiting a star other than the Sun. They vary in size, composition, and distance, from rocky ones like Earth to gas giants like Jupiter 🪐.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card content-card shadow-lg h-100">
+                <div class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 animate-card cosmic-card">
                     <div class="card-body">
-                        <h4 class="card-title">Star 🌟</h4>
-                        <p class="card-text">A star is a massive, luminous sphere of hot gas, primarily hydrogen and helium, held together by its own gravity. Nuclear fusion occurs in its core, releasing energy in the form of light and heat ☀️.</p>
+                        <h4 class="card-title cosmic-text">Star 🌟</h4>
+                        <p class="card-text cosmic-text">A star is a massive and luminous sphere of hot gas, primarily hydrogen and helium, held together by its own gravity. Nuclear fusion occurs in its core, releasing energy in the form of light and heat ☀️.</p>
                     </div>
                 </div>
             </div>
             <div class="col-md-4">
-                <div class="card content-card shadow-lg h-100">
+                <div class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 animate-card cosmic-card">
                     <div class="card-body">
-                        <h4 class="card-title">Reference System 📏</h4>
-                        <p class="card-text">A reference system is a method of measuring and describing the position or movement of objects in space. It includes a set of points or axes that help understand the relationships between different elements 🌌.</p>
+                        <h4 class="card-title cosmic-text">Reference Frame 📏</h4>
+                        <p class="card-text cosmic-text">A reference frame is a way to measure and describe the position or movement of objects in space. It includes a set of points or axes that help understand the relationships between different elements 🌌.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<div class="stars"></div> <!-- Div for animated stars -->
 @endsection
 
 @section('footer')
-<!-- Puedes añadir contenido personalizado en el pie de página si lo deseas -->
+<!-- You can add custom footer content if desired -->
 @endsection
 
 @push('css')
 <style>
-    /* Paleta de colores azul oscuro */
-    :root {
-        --space-bg: #0a1e3f; /* Azul muy oscuro para el fondo */
-        --space-primary: #1c3d5a; /* Azul oscuro */
-        --space-secondary: #2a6cb7; /* Azul medio */
-        --space-accent: #ffffff; /* Blanco para el texto */
-        --card-bg: rgba(255, 255, 255, 0.1); /* Fondo semi-transparente para las tarjetas */
-        --text-dark-blue: #1c3d5a; /* Texto azul oscuro */
-        --space-divider: #2a6cb7; /* Azul medio para divisores */
+    /* Custom styles for a cosmic appearance */
+    body {
+        background-color: #000022; /* Dark blue background */
+        color: #ffffff; /* White text color */
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        background-attachment: fixed; /* Keep background fixed */
     }
 
-    /* Reiniciar márgenes y paddings */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-
-    /* Fondo de Particles.js */
-    #particles-js {
+    /* Styles for the starry background */
+    .stars {
         position: fixed;
-        width: 100%;
-        height: 100%;
-        background-color: var(--space-bg);
-        background-size: cover;
-        background-position: 50% 50%;
-        z-index: -1;
         top: 0;
         left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('path_to_your_starry_background_image.jpg') center center / cover no-repeat; /* Replace with your starry background image */
+        z-index: -1; /* Keep it behind content */
+        opacity: 0.7; /* Adjust opacity for visibility */
+    }
+    
+    .cosmic-title {
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.6); /* Glow effect for title */
+        animation: fadeIn 1.5s; /* Animation for title */
+        margin-bottom: 50px; /* Space below title */
+    }
+    
+    .cosmic-text {
+        color: rgba(255, 255, 255, 0.9); /* Slightly transparent white text */
+        text-shadow: 0 0 5px rgba(0, 0, 0, 0.5), 0 0 10px rgba(0, 0, 0, 0.5); /* Shadow for better integration */
     }
 
-    body {
-        background-color: var(--space-bg);
-        color: var(--space-accent);
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        overflow-x: hidden;
+    .cosmic-card {
+        backdrop-filter: blur(10px); /* Blur effect for cards */
+        border-radius: 15px; /* Rounded corners */
+        transition: transform 0.3s ease; /* Smooth hover effect */
     }
 
-    /* Contenedor de contenido */
-    .content-wrapper {
-        position: relative;
-        z-index: 1;
+    .cosmic-card:hover {
+        transform: scale(1.05); /* Slightly enlarge on hover */
     }
 
-    /* Títulos Dinámicos */
-    .dynamic-title h1 {
-        font-size: 4rem;
-        font-weight: 800;
-        color: var(--space-accent);
-        text-shadow: 4px 4px 8px rgba(0, 0, 0, 0.7);
-        transition: opacity 1s ease-out, transform 1s ease-out;
+    .accordion-button {
+        font-size: 1.25rem;
+    }
+    
+    .card-title {
+        font-weight: bold;
     }
 
-    .dynamic-title p {
-        font-size: 1.5rem;
-        color: var(--space-accent);
+    .card-text {
+        font-size: 1.1rem;
     }
 
-    .text-section {
-        color: var(--space-secondary);
+    .animate-card {
+        animation: fadeIn 1.5s; /* Animation for cards */
+        opacity: 0; /* Start invisible */
+        transform: translateY(20px); /* Slide up effect */
     }
 
-    /* Divisores */
-    .space-divider {
-        border-top: 2px solid var(--space-divider);
-        margin: 2rem 0;
-    }
-
-    /* Tarjetas */
-    .content-card {
-        background-color: var(--card-bg);
-        border: none;
-        border-radius: 15px;
-        backdrop-filter: blur(10px); /* Efecto de desenfoque para las tarjetas */
-        transition: opacity 1s ease-out, transform 1s ease-out;
-    }
-
-    .content-card .card-body {
-        color: var(--space-accent);
-    }
-
-    .content-card .card-title {
-        color: var(--space-accent);
-        font-weight: 700;
-    }
-
-    .content-card .card-text {
-        color: var(--space-accent);
-    }
-
-    .content-card:hover {
-        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        transform: translateY(-5px);
-    }
-
-    /* Botones */
-    .btn-primary {
-        background-color: var(--space-secondary);
-        border: none;
-        color: #ffffff;
-        transition: background-color 0.3s;
-    }
-
-    .btn-primary:hover {
-        background-color: #1a5276;
-    }
-
-    .btn-success {
-        background-color: #28a745;
-        border: none;
-        color: #ffffff;
-        transition: background-color 0.3s;
-    }
-
-    .btn-success:hover {
-        background-color: #218838;
-    }
-
-    /* Accordion */
-    .space-accordion .accordion-item {
-        background-color: transparent;
-        border: none;
-    }
-
-    .space-accordion .accordion-button {
-        background-color: var(--card-bg);
-        color: var(--space-accent);
-        font-weight: 600;
-        border-radius: 10px;
-        padding: 1rem;
-        transition: background-color 0.3s, color 0.3s;
-    }
-
-    .space-accordion .accordion-button:not(.collapsed) {
-        background-color: var(--space-secondary);
-        color: #ffffff;
-    }
-
-    .space-accordion .accordion-body {
-        background-color: var(--card-bg);
-        color: var(--space-accent);
-        border-radius: 0 0 10px 10px;
-        padding: 1rem;
-    }
-
-    /* Accordion Minimalista */
-    .minimal-accordion .accordion-button {
-        padding: 1rem;
-        font-size: 1rem;
-        border-radius: 10px;
-    }
-
-    .minimal-accordion .accordion-button:focus {
-        box-shadow: none;
-    }
-
-    .minimal-accordion .accordion-body {
-        padding: 1rem;
-    }
-
-    .feature-list {
-        list-style-type: disc;
-        padding-left: 1.5rem;
-    }
-
-    /* Animaciones */
-    .dynamic-title.hidden {
-        opacity: 0;
-        transform: translateY(-50px);
-    }
-
-    .content-card.hidden {
-        opacity: 0;
-        transform: translateY(50px);
-    }
-
-    /* Ajustes Responsivos */
-    @media (max-width: 768px) {
-        .dynamic-title h1 {
-            font-size: 2.5rem;
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
         }
-
-        .dynamic-title p {
-            font-size: 1.2rem;
+        100% {
+            opacity: 1;
+            transform: translateY(0);
         }
+    }
 
-        .minimal-accordion .accordion-button {
-            font-size: 0.95rem;
-            padding: 0.75rem;
-        }
+    .container-fluid {
+        max-width: 1200px; /* Optional: Limit container width */
+        margin: 0 auto; /* Center the container */
+    }
+
+    hr {
+        border: 1px solid rgba(255, 255, 255, 0.3); /* Light colored horizontal rules */
     }
 </style>
 @endpush
 
 @push('js')
-<!-- Inicializar Particles.js -->
 <script>
-    /* Configuración de Particles.js */
-    particlesJS("particles-js", {
-        "particles": {
-            "number": {
-                "value": 150,
-                "density": {
-                    "enable": true,
-                    "value_area": 800
-                }
-            },
-            "color": {
-                "value": "#ffffff"
-            },
-            "shape": {
-                "type": "circle",
-                "stroke": {
-                    "width": 0,
-                    "color": "#000000"
-                }
-            },
-            "opacity": {
-                "value": 0.5,
-                "random": true,
-                "anim": {
-                    "enable": false
-                }
-            },
-            "size": {
-                "value": 1.5,
-                "random": true,
-                "anim": {
-                    "enable": false
-                }
-            },
-            "line_linked": {
-                "enable": true,
-                "distance": 150,
-                "color": "#ffffff",
-                "opacity": 0.4,
-                "width": 1
-            },
-            "move": {
-                "enable": true,
-                "speed": 0.5,
-                "direction": "none",
-                "random": false,
-                "straight": false,
-                "out_mode": "out",
-                "bounce": false,
-                "attract": {
-                    "enable": false
-                }
-            }
-        },
-        "interactivity": {
-            "detect_on": "canvas",
-            "events": {
-                "onhover": {
-                    "enable": true,
-                    "mode": "grab"
-                },
-                "onclick": {
-                    "enable": false
-                },
-                "resize": true
-            },
-            "modes": {
-                "grab": {
-                    "distance": 150,
-                    "line_linked": {
-                        "opacity": 0.5
-                    }
-                }
-            }
-        },
-        "retina_detect": true
-    });
+    // Add dynamic scroll animations
+    document.addEventListener('scroll', () => {
+        const cards = document.querySelectorAll('.animate-card');
+        const triggerBottom = window.innerHeight / 5 * 4;
 
-    document.addEventListener('DOMContentLoaded', () => {
-        // Animación del Título Dinámico
-        const title = document.querySelector('.dynamic-title');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 100) {
-                title.classList.add('hidden');
+        cards.forEach(card => {
+            const cardTop = card.getBoundingClientRect().top;
+            if (cardTop < triggerBottom) {
+                card.style.opacity = 1; // Fade in
+                card.style.transform = 'translateY(0)'; // Slide up
             } else {
-                title.classList.remove('hidden');
+                card.style.opacity = 0; // Fade out
+                card.style.transform = 'translateY(20px)'; // Slide down
             }
-        });
-
-        // Observador de Intersección para Tarjetas y Accordion
-        const elements = document.querySelectorAll('.content-card, .accordion-item');
-        const options = {
-            threshold: 0.1
-        };
-
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.remove('hidden');
-                    observer.unobserve(entry.target);
-                }
-            });
-        }, options);
-
-        elements.forEach(el => {
-            el.classList.add('hidden');
-            observer.observe(el);
         });
     });
 </script>
