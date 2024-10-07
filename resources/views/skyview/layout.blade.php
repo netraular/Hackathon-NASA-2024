@@ -84,7 +84,7 @@
                     let starMaterial = new THREE.MeshBasicMaterial({ color: color });
                     let star = new THREE.Mesh(starGeometry, starMaterial); // Variable única para cada estrella
                     star.position.set({{ $star['x'] }}, {{ $star['y'] }}, {{ $star['z'] }});
-                    star.userData = { opacityDirection: 1, opacitySpeed: Math.random() * 0.05 + 0.01 ,name: "{{ $star['name'] }}" // Agregar el nombre de la estrella
+                    star.userData = { opacityDirection: 1, opacitySpeed: Math.random() * 0.2+0.1 ,name: "{{ $star['name'] }}" // Agregar el nombre de la estrella
                 };
                     scene.add(star);
                     stars.push(star);
@@ -93,20 +93,24 @@
         }
         createStars();
 
-        const rotationSpeed = 0.001;
+        const rotationSpeed = 0.0003;
         function rotateStars() {
             stars.forEach(star => {
                 star.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), rotationSpeed);
             });
         }
-
         function twinkleStars() {
             stars.forEach(star => {
-                star.material.opacity += star.userData.opacityDirection * star.userData.opacitySpeed;
-                if (star.material.opacity >= 1 || star.material.opacity <= 0.8) {
-                    star.userData.opacityDirection *= -1; // Cambiar dirección del parpadeo
+                // Probabilidad de parpadeo para cada estrella (ajusta según tus necesidades)
+                const twinkleProbability = 0.1; // 1% de probabilidad de parpadeo en cada frame
+
+                if (Math.random() < twinkleProbability) {
+                    star.material.opacity += star.userData.opacityDirection * star.userData.opacitySpeed;
+                    if (star.material.opacity >= 1 || star.material.opacity <= 0.3) {
+                        star.userData.opacityDirection *= -1; // Cambiar dirección del parpadeo
+                    }
+                    star.material.transparent = true;
                 }
-                star.material.transparent = true;
             });
         }
 
@@ -128,9 +132,11 @@
         // Mostrar ángulo de rotación
         const angleDisplay = document.getElementById('angle-display');
         function updateAngleDisplay() {
-            const phi = THREE.MathUtils.radToDeg(controls.getPolarAngle());
-            angleDisplay.innerText = `Ángulo: ${phi.toFixed(2)}°`;
-        }
+    const phi = THREE.MathUtils.radToDeg(controls.getPolarAngle());
+    const adjustedPhi = phi - 90;
+    const hasDecimals = adjustedPhi % 1 !== 0;
+    angleDisplay.innerText = `Angle: ${hasDecimals ? adjustedPhi.toFixed(2) : adjustedPhi}°`;
+}
 
         // Raycaster para detectar clics en las estrellas
         const raycaster = new THREE.Raycaster();

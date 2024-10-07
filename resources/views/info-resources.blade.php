@@ -55,7 +55,7 @@
             <h2 class="mb-4 cosmic-text">Project Features 🌟</h2>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-4">
-                    <a href="https://nasa24.netshiba.com/exploreV1">
+                    <a href="https://nasa24.netshiba.com/skyview/exoplanet/1">
                         <div class="feature-card">
                             <i class="fas fa-map-marked-alt fa-3x mb-3 feature-icon"></i>
                             <h4 class="cosmic-text">Interactive Night Sky Map</h4>
@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <a href="">
+                    <a href="https://nasa24.netshiba.com/skyview/exoplanets">
                         <div class="feature-card">
                             <i class="fas fa-download fa-3x mb-3 feature-icon"></i>
                             <h4 class="cosmic-text">Download Data</h4>
@@ -95,7 +95,7 @@
                     <a href="https://nasa24.netshiba.com/stardata/uploadstars">
                         <div class="feature-card">
                             <i class="fas fa-upload fa-3x mb-3 feature-icon"></i>
-                            <h4 class="cosmic-text">Carga de Datos</h4>
+                            <h4 class="cosmic-text">Upliad new data</h4>
                             <p class="cosmic-text">Upload your own data of planets and stars to enrich our database.</p>
                         </div>
                     </a>
@@ -110,7 +110,7 @@
             <h2 class="mb-4 cosmic-text">Definitions 🔭</h2>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-4">
-                    <a href="https://es.wikipedia.org/wiki/Exoplaneta" target="_blank" >
+                    <a href="https://en.wikipedia.org/wiki/Exoplanet" target="_blank" >
                         <div
                             class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 cosmic-card interactive-card">
                             <h2 class="card-title cosmic-text" style="font-size: 1.5rem">Exoplanet 🌍</h2>
@@ -123,7 +123,7 @@
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a href="https://es.wikipedia.org/wiki/Estrella" target="_blank">
+                    <a href="https://en.wikipedia.org/wiki/Star" target="_blank">
                         <div
                             class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 cosmic-card interactive-card">
                             <h4 class="card-title cosmic-text" style="font-size: 1.5rem">Star 🌟</h4>
@@ -137,7 +137,7 @@
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a href="https://es.wikipedia.org/wiki/Constelaci%C3%B3n" target="_blank">
+                    <a href="https://en.wikipedia.org/wiki/Constellation" target="_blank">
                         <div
                             class="card h-100 shadow-sm rounded-3 bg-transparent text-light border-0 cosmic-card interactive-card">
                             <h4 class="card-title cosmic-text" style="font-size: 1.5rem">Constellation ⭐</h4>
@@ -157,27 +157,28 @@
 
         <!-- Sección de bibliografía -->
         <div class="bibliography-section">
-            <h2 class="mb-4 cosmic-text">Bibliography 📚</h2>
-            <div class="row g-4 justify-content-center">
-                <div class="col-md-6">
-                    <a href="https://gea.esac.esa.int/archive/" target="_blank">
-                        <div class="feature-card bg-transparent text-light border border-white rounded-3">
-                            <h4 class="cosmic-text">Gaia Archive</h4>
-                            <p class="cosmic-text">Learn more about the Gaia mission to map the Milky Way.</p>
-                        </div>
-                    </a>
+    <h2 class="mb-4 cosmic-text">Bibliography 📚</h2>
+    <p class="mb-4 cosmic-text">We have obtained the real data to create the 3D representation from the following resources:</p>
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-6">
+            <a href="https://gea.esac.esa.int/archive/" target="_blank">
+                <div class="feature-card bg-transparent text-light border border-white rounded-3">
+                    <h4 class="cosmic-text">Gaia Archive</h4>
+                    <p class="cosmic-text">Learn more about the Gaia mission to map the Milky Way.</p>
                 </div>
-                <div class="col-md-6">
-                    <a href="https://exoplanetarchive.ipac.caltech.edu/docs/counts_detail.html" target="_blank">
-                        <div class="feature-card bg-transparent text-light border border-white rounded-3">
-                            <h4 class="cosmic-text">NASA's Exoplanet Exploration</h4>
-                            <p class="cosmic-text">Explore NASA's archive for all the information about the exoplanets discovered.
-                            </p>
-                        </div>
-                    </a>
-                </div>
-            </div>
+            </a>
         </div>
+        <div class="col-md-6">
+            <a href="https://exoplanetarchive.ipac.caltech.edu/docs/counts_detail.html" target="_blank">
+                <div class="feature-card bg-transparent text-light border border-white rounded-3">
+                    <h4 class="cosmic-text">NASA's Exoplanet Exploration</h4>
+                    <p class="cosmic-text">Explore NASA's archive for all the information about the exoplanets discovered.
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
 
     </div>
 </div>

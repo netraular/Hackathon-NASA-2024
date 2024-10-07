@@ -195,7 +195,7 @@ return [
     'classes_content_wrapper' => '',
     'classes_content_header' => '',
     'classes_content' => '',
-    'classes_sidebar' => 'sidebar-dark-primary elevation-4',
+    'classes_sidebar' => 'sidebar-dark-primary elevation-4 ',
     'classes_sidebar_nav' => '',
     'classes_topnav' => 'navbar-dark',
     'classes_topnav_nav' => 'navbar-expand',
@@ -341,9 +341,18 @@ return [
                 'icon' => 'fas fa-fw fa-globe',
             ],
             [
-                'text' => 'Exoplanet 1',
-                'url' => 'skyview/exoplanet/1', // Modificado para apuntar a /skyview/exoplanets
+                'text' => 'View exoplanet stars',
                 'icon' => 'fas fa-fw fa-star',
+                'submenu' => [
+                    // Aquí se añaden los 50 elementos
+                    ...array_map(function($id) {
+                        return [
+                            'text' => "Exoplanet {$id}",
+                            'url' => "skyview/exoplanet/{$id}",
+                            'icon' => 'fas fa-fw fa-star',
+                        ];
+                    }, range(1, 50)),
+                ],
             ],
             [
                 'text' => 'Create a constellation',
