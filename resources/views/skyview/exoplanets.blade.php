@@ -170,26 +170,37 @@
 
             // const starName = document.createElement('p');
             // starName.innerHTML = `Star name: ${starName}`;
+// Constellation button
+const constellationButton = document.createElement('button');
+constellationButton.innerHTML = 'Go to planet';
+constellationButton.style.padding = '5px 10px';
+constellationButton.style.backgroundColor = '#4CAF50';
+constellationButton.style.color = 'white';
+constellationButton.style.border = 'none';
+constellationButton.style.borderRadius = '3px';
+constellationButton.style.cursor = 'pointer';
+var raw_planets = <?php echo json_encode($planets); ?>;
+constellationButton.onclick = function() {
+    window.location.href = 'https://nasa24.netshiba.com/skyview/exoplanet/'+id; // Replace with your desired URL
+};
 
-            // Constellation button
-            const constellationButton = document.createElement('button');
-            constellationButton.innerHTML = 'Go to planet';
-            constellationButton.style.padding = '5px 10px';
-            constellationButton.style.backgroundColor = '#4CAF50';
-            constellationButton.style.color = 'white';
-            constellationButton.style.border = 'none';
-            constellationButton.style.borderRadius = '3px';
-            constellationButton.style.cursor = 'pointer';
-            var raw_planets = <?php echo json_encode($planets); ?>;
-            constellationButton.onclick = function() {
-                window.location.href = 'https://nasa24.netshiba.com/skyview/exoplanet/'+id; // Replace with your desired URL
-            };
+// Download planet data button (no action)
+const downloadButton = document.createElement('button');
+downloadButton.innerHTML = 'Download data';
+downloadButton.style.padding = '5px 10px';
+downloadButton.style.backgroundColor = '#2196F3'; // Different color for distinction
+downloadButton.style.color = 'white';
+downloadButton.style.border = 'none';
+downloadButton.style.borderRadius = '3px';
+downloadButton.style.cursor = 'pointer';
+downloadButton.style.marginTop = '10px'; // Add some margin to separate it from other buttons
 
-            // Append elements to popup
-            popup.appendChild(closeButton);
-            popup.appendChild(planetName);
-            popup.appendChild(planetDistance);
-            popup.appendChild(constellationButton);
+// Append elements to popup
+popup.appendChild(closeButton);
+popup.appendChild(planetName);
+popup.appendChild(planetDistance);
+popup.appendChild(constellationButton);
+popup.appendChild(downloadButton);
 
             // Add popup to the body
             document.body.appendChild(popup);
