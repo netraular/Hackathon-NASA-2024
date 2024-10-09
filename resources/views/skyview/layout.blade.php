@@ -6,9 +6,11 @@
 <div id="threejs-container">
     <div id="info">
         <div id="text_tutorial">
-            <p>Planet ID: {{ $data['id'] }}</p>
-            <p>Planet Name: {{ $data['name'] }}</p>
-            <p>Star Name: {{ $data['star_name'] }}</p>
+            <p> Press space bar to pause or continue the rotation of the stars.</p>
+            <b> Exoplanet data:</b><br>
+            <b>Planet ID: {{ $data['id'] }}</b><br>
+            <b>Planet Name: {{ $data['name'] }}</b><br>
+            <b>Star Name: {{ $data['star_name'] }}</b><br>
             <button class="btn btn-outline-dark btn-sm" style="color:white" id="hide-tutorial">X</button>
         </div>
     </div>
@@ -17,6 +19,7 @@
     <div id="popup-menu" style="position: absolute; top: 30px; left: 20px; width: 250px; background-color: rgba(128, 128, 128, 0.2); color: white; padding: 10px; border-radius: 5px; display: none;">
         <div id="popup-content"></div>
     </div>
+    <div id="click-circle" style="position: absolute; width: 10px; height: 10px; background-color: red; border-radius: 50%; display: none;"></div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
@@ -42,6 +45,25 @@
         const container = document.getElementById('threejs-container');
         container.appendChild(renderer.domElement);
 
+        // Ajustar el tamaño del canvas para tener en cuenta el sidebar
+        function adjustCanvasSize() {
+            const sidebarWidth = document.querySelector('.main-sidebar').offsetWidth;
+            console.log(sidebarWidth)
+            const canvasWidth = window.innerWidth - sidebarWidth;
+            renderer.setSize(canvasWidth, window.innerHeight);
+            camera.aspect = canvasWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        }
+
+        // Ajustar el tamaño inicialmente
+        adjustCanvasSize();
+
+        window.addEventListener('resize', adjustCanvasSize);
+        const sidebar = document.querySelector('.main-sidebar');
+        if (sidebar) {
+            console.log('sidebar modificado');
+            sidebar.addEventListener('transitionend', adjustCanvasSize);
+        }
         // Crear fondo con degradado para simular el espacio
         const gradientCanvas = document.createElement('canvas');
         const gradientContext = gradientCanvas.getContext('2d');
@@ -70,7 +92,6 @@
         const texture = new THREE.CanvasTexture(gradientCanvas);
         scene.background = texture;
 
-        // Añadir partículas que imiten una nebulosa
         
 
         // Crear estrellas en posiciones específicas
@@ -93,12 +114,22 @@
         }
         createStars();
 
+        let isRotating = true;  // Variable para controlar si las estrellas están rotando
+        window.addEventListener('keydown', function(event) {
+            if (event.code === 'Space') {
+                isRotating = !isRotating;  // Cambia el estado de rotación
+            }
+        });
+
         const rotationSpeed = 0.0003;
         function rotateStars() {
-            stars.forEach(star => {
-                star.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), rotationSpeed);
-            });
+            if (isRotating) {
+                stars.forEach(star => {
+                    star.position.applyAxisAngle(new THREE.Vector3(0, 1, 0), rotationSpeed);
+                });
+            }
         }
+
         function twinkleStars() {
             stars.forEach(star => {
                 // Probabilidad de parpadeo para cada estrella (ajusta según tus necesidades)
@@ -178,6 +209,8 @@
 
 "Among the stars, a story waits,\nA whispered hope beyond the gates,\nIn the dark, their beauty creates,\nA dream of peace that never abates.",
 
+"In the velvet sky, where stars align, Puchita shines, a love so divine, Her light eclipses all the rest, A beacon bright, a heart's caress. \nIn the cosmic dance, she takes her place,  A radiant soul, a glowing grace,  Among the stars, she stands apart,  A tender flame, a loving heart.\nPuchita, my star, my guiding light,  In every moment, you bring delight,  Through night and day, your love I see,  A constellation, just for me.",
+
 "The stars aloft, so pure and bright,\nTheir glow a lantern in the night,\nIn the darkest sky, they give us sight,\nA song of dreams, taking flight.",
 
 "Through the vastness, the stars remain,\nA gentle light in night's domain,\nIn the quiet dark, they ease the pain,\nA hope reborn through joy and strain.",
@@ -191,35 +224,51 @@
         }
 
         window.addEventListener('click', function(event) {
-            const rect = container.getBoundingClientRect();
-            const offsetX = event.clientX - rect.left;
-            const offsetY = event.clientY - rect.top;
+    const sidebarWidth = document.querySelector('.main-sidebar').offsetWidth;
+    const rect = renderer.domElement.getBoundingClientRect();
 
-            mouse.x = (offsetX / container.clientWidth) * 2 - 1;
-            mouse.y = -(offsetY / container.clientHeight) * 2 + 1;
+    const clickX = event.clientX - rect.left; // Ajustar por el ancho del sidebar
+    const clickY = event.clientY - rect.top;
+    
+    mouse.x = ((event.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((event.clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(mouse, camera);
+    const intersects = raycaster.intersectObjects(stars);
 
-            raycaster.setFromCamera(mouse, camera);
-            const intersects = raycaster.intersectObjects(stars);
+    const popupMenu = document.getElementById('popup-menu');
+    const popupContent = document.getElementById('popup-content');
+    const clickCircle = document.getElementById('click-circle');
 
-            const popupMenu = document.getElementById('popup-menu');
-            const popupContent = document.getElementById('popup-content');
+    // Mostrar el círculo rojo en el lugar pulsado
+    clickCircle.style.left = clickX - 5 + 'px'; // Centrar el círculo en el clic
+    clickCircle.style.top = clickY - 5 + 'px'; // Centrar el círculo en el clic
+    clickCircle.style.display = 'block';
 
-            if (intersects.length > 0) {
-                const star = intersects[0].object;
-                const { x, y, z } = star.position;
-                const poem = generatePoem();
-                const starName = star.userData.name; // Obtener el nombre de la estrella
-                popupContent.innerHTML = `
-                    <p>Star Name: ${starName}</p>
-                    <p>Star coordinates:</p>
-                    <p>X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, Z: ${z.toFixed(2)}</p>
-                    <p>${poem}</p>
-                `;
-                popupMenu.style.display = 'block';
-            } else {
-                popupMenu.style.display = 'none';
-            }
-        });
+    // Ocultar el círculo después de un breve período de tiempo
+    setTimeout(() => {
+        clickCircle.style.display = 'none';
+    }, 500);
+
+    // Mostrar las coordenadas del clic
+    clickCoordinatesText = `X: ${clickX.toFixed(2)}, Y: ${clickY.toFixed(2)}`;
+
+
+    if (intersects.length > 0) {
+        const star = intersects[0].object;
+        const { x, y, z } = star.position;
+        const poem = generatePoem();
+        const starName = star.userData.name; // Obtener el nombre de la estrella
+        popupContent.innerHTML = `
+            <p>Star Name: ${starName}</p>
+            <p>Star coordinates:</p>
+            <p>X: ${x.toFixed(2)}, Y: ${y.toFixed(2)}, Z: ${z.toFixed(2)}</p>
+            <p>${poem}</p>
+        `;
+        popupMenu.style.display = 'block';
+    } else {
+        popupMenu.style.display = 'none';
+    }
+});
 
         // Animar la escena
         function animate() {
@@ -236,7 +285,8 @@
         window.addEventListener('resize', function() {
             const width = window.innerWidth;
             const height = window.innerHeight;
-            renderer.setSize(width, height);
+            const contentWrapper = document.querySelector('.content-wrapper');
+            renderer.setSize(window.innerWidth, window.innerHeight);
             camera.aspect = width / height;
             camera.updateProjectionMatrix();
         });
