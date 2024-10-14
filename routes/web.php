@@ -36,3 +36,7 @@ Route::get('/skyview/exoplanet/{id}', [SkyViewController::class, 'exoplanet'])
 Route::get('/test-script', [StarDataController::class, 'testScript'])->name('test.script');
 Route::get('/stardata/uploadstars', [StarDataController::class, 'showUploadStarsForm'])->name('csv.upload');
 Route::post('/stardata/processnewstars', [StarDataController::class, 'processNewStars'])->name('csv.process');
+
+Route::get('/planet-viewer', function () {
+    return view('planet_viewer');
+});
