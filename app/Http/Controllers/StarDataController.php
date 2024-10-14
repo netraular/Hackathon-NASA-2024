@@ -63,7 +63,8 @@ class StarDataController extends Controller
         if (!file_exists($csvFilePath)) {
             return response()->json(['error' => 'Archivo CSV no encontrado en: ' . $csvFilePath], 500);
         }
-
+        dd('not finished');
+        $pythonScriptPath='';
         // Ejecutar el script Python
         $process = new Process(['c#', $pythonScriptPath, $csvFilePath]);
         $process->run();
