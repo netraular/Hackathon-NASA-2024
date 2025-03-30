@@ -4,7 +4,7 @@
 
 ## WEB
 
-https://nasa24.netshiba.com
+https://nasa24.raular.com
 
 ## Introduction
 This project is part of the NASA 2024 Hackathon. It allows users to imagine what the night sky would look like from different exoplanets. The interactive website lets users explore the stars from 50 exoplanets and access scientific information about them. 🌠 Users can also create their own constellations, name them, and save them, allowing others to see and interact with these new designs. By turning complex data into something creative and interactive, this project helps make distant worlds more relatable, inspiring curiosity and imagination.

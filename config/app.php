@@ -54,7 +54,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'https://nasa24.netshiba.com/'),
+    'url' => env('APP_URL', 'https://nasa24.raular.com/'),
 
     /*
     |--------------------------------------------------------------------------

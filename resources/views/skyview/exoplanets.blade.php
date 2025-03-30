@@ -181,7 +181,7 @@ constellationButton.style.borderRadius = '3px';
 constellationButton.style.cursor = 'pointer';
 var raw_planets = <?php echo json_encode($planets); ?>;
 constellationButton.onclick = function() {
-    window.location.href = 'https://nasa24.netshiba.com/skyview/exoplanet/'+id; // Replace with your desired URL
+    window.location.href = 'https://nasa24.raular.com/skyview/exoplanet/'+id; // Replace with your desired URL
 };
 
 // Download planet data button (no action)

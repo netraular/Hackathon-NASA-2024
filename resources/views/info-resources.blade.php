@@ -55,7 +55,7 @@
             <h2 class="mb-4 cosmic-text">Project Features 🌟</h2>
             <div class="row g-4 justify-content-center">
                 <div class="col-md-4">
-                    <a href="https://nasa24.netshiba.com/skyview/exoplanet/1">
+                    <a href="https://nasa24.raular.com/skyview/exoplanet/1">
                         <div class="feature-card">
                             <i class="fas fa-map-marked-alt fa-3x mb-3 feature-icon"></i>
                             <h4 class="cosmic-text">Interactive Night Sky Map</h4>
@@ -64,7 +64,7 @@
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a href="https://nasa24.netshiba.com/exploreV2">
+                    <a href="https://nasa24.raular.com/exploreV2">
                         <div class="feature-card">
                             <i class="fas fa-drafting-compass fa-3x mb-3 feature-icon"></i>
                             <h4 class="cosmic-text">Custom Constellation Creation</h4>
@@ -73,7 +73,7 @@
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a href="https://nasa24.netshiba.com/">
+                    <a href="https://nasa24.raular.com/">
                         <div class="feature-card">
                             <i class="fas fa-vote-yea fa-3x mb-3 feature-icon"></i>
                             <h4 class="cosmic-text">Constellation Voting System</h4>
@@ -83,7 +83,7 @@
                 </div>
 
                 <div class="col-md-4">
-                    <a href="https://nasa24.netshiba.com/skyview/exoplanets">
+                    <a href="https://nasa24.raular.com/skyview/exoplanets">
                         <div class="feature-card">
                             <i class="fas fa-download fa-3x mb-3 feature-icon"></i>
                             <h4 class="cosmic-text">Download Data</h4>
@@ -92,7 +92,7 @@
                     </a>
                 </div>
                 <div class="col-md-4">
-                    <a href="https://nasa24.netshiba.com/stardata/uploadstars">
+                    <a href="https://nasa24.raular.com/stardata/uploadstars">
                         <div class="feature-card">
                             <i class="fas fa-upload fa-3x mb-3 feature-icon"></i>
                             <h4 class="cosmic-text">Upliad new data</h4>
